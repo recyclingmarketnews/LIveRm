@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Allow: sitemap.xml
+Allow: sitemap.html
+
+Sitemap: https://www.recyclingmarketnews.com/sitemap.xml
+
+disallow:

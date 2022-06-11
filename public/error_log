@@ -1,0 +1,3 @@
+[20-Apr-2022 22:05:15 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\DashboardController::termsandconditions() in /home/wu6wt82f25ae/public_html/recyclingmarketnewstrial.com/app/Http/Controllers/DashboardController.php on line 66
+[20-Apr-2022 22:06:46 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\DashboardController::termsandconditions() in /home/wu6wt82f25ae/public_html/recyclingmarketnewstrial.com/app/Http/Controllers/DashboardController.php on line 66
+[20-Apr-2022 22:08:38 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\DashboardController::termsandconditions() in /home/wu6wt82f25ae/public_html/recyclingmarketnewstrial.com/app/Http/Controllers/DashboardController.php on line 66
