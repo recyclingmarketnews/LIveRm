@@ -281,7 +281,12 @@ class ProductController extends Controller
         }
         $news->category_id = $request->category_id;
         $news->link = $request->link;
-        $news->videolink = $request->videolink;
+        if($request->has('videolink')){
+            $vlink = $request->videolink;
+            $final = preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","www.youtube.com/embed/$1",$vlink);
+            $news->videolink = $final;
+        }
+        
         if($request->country != ''){
             $news->country = $request->country;
         }else{
@@ -629,7 +634,7 @@ class ProductController extends Controller
         $rating = 'all';
         $followstirng = '';
         $followsarray= array();
-        $list=DB::table("news_list")->where('approval',1)->orderBy('id','desc')->paginate(15);
+        $list=DB::table("news_list")->where('approval',1)->orderBy('id','desc')->paginate(24);
          $cats=Product::all();
         $publisherfollowlist = DB::table("follower_list")->where('userid',Auth::user()->id)->get();
         if(count($publisherfollowlist) > 0){
@@ -835,7 +840,7 @@ class ProductController extends Controller
             $list->where('rating','>=',$request->rating);
             $rating = $request->rating;
         }
-         $list =$list->orderBy('id','desc')->paginate(15);
+         $list =$list->orderBy('id','desc')->paginate(24);
          $cats=Product::all();
         $publisherfollowlist = DB::table("follower_list")->where('userid',Auth::user()->id)->get();
         if(count($publisherfollowlist) > 0){
@@ -915,9 +920,9 @@ class ProductController extends Controller
         $rating = 'all';
         $followstirng = '';
         $followsarray= array();
-        $list=News::where('approval',1)->orderBy('id','desc')->paginate(15);
+        $list=News::where('approval',1)->orderBy('id','desc')->paginate(24);
         if($id && $id != 'all'){
-            $list=News::where('approval',1)->where('category_id',$id)->orderBy('id','desc')->paginate(15);
+            $list=News::where('approval',1)->where('category_id',$id)->orderBy('id','desc')->paginate(24);
             $category = $id;
         }
         
@@ -952,7 +957,7 @@ class ProductController extends Controller
          $newsdetails=DB::table("news_list")->where('id',$id)->where('approval',1)->first();
          //
          $catid = $newsdetails->category_id;
-         $relatedlist = DB::table('news_list')->where('category_id',$catid)->where('approval',1)->limit('5')->get();
+         $relatedlist = DB::table('news_list')->where('category_id',$catid)->where('approval',1)->orderBy('id','desc')->limit('5')->get();
          $totalcomment = DB::table('comments')->where('postid',$id)->count();
          $comments = DB::table('comments')->where('postid',$id)->orderBy('id','desc')->get();
          $res = DB::table('rating')->where('userid',Auth::user()->id)->where('postid',$id)->first();

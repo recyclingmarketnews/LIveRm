@@ -1,5 +1,5 @@
-@extends('dashboard.layouts.app')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <style>
     #img-preview {
   display: none;
@@ -68,7 +68,7 @@
                         <div class="row d-flex align-items-md-stretch">
                         <div class="col-lg-12 col-md-12 flex-lg-last flex-md-first">
                             <div class="card sales-report">
-                                <form action="{{ URL::to('/submitpost')}}" method="post" enctype="multipart/form-data" class="">
+                                <form action="<?php echo e(URL::to('/submitpost')); ?>" method="post" enctype="multipart/form-data" class="">
                                     <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
                                     <div class="card-body">
                                 <div class="row">
@@ -107,16 +107,16 @@
                                               </div>                                        
                                         </div>
                                     </div>
-                                        @if(Auth::id() == 1 || Auth::id() == 61)
+                                        <?php if(Auth::id() == 1 || Auth::id() == 61): ?>
                                           <div class="col-xl-12 mb-3">
                                               <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">Image Ref Link</label><input name="image_ref_link" type="text" class="transparent_form h-40px form-control inputstyle" value=""></div>
                                           </div>
-                                        @endif                               
-                                        @if(Auth::id() == 1 || Auth::id() == 61)
+                                        <?php endif; ?>                               
+                                        <?php if(Auth::id() == 1 || Auth::id() == 61): ?>
                                           <div class="col-xl-12 mb-3">
                                               <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">Other Site Link</label><input name="other_site_link" type="text" class="transparent_form h-40px form-control inputstyle" value=""></div>
                                           </div>
-                                        @endif                               
+                                        <?php endif; ?>                               
 
                                         <div class="col-xl-12 mb-3">
                                             <div class="m-0 form-group">
@@ -137,47 +137,47 @@
     										    <label class="form-label">News Category *</label>
     											<select class="form-select" required name="category_id"> 
     												<option value="">Select News Category</option>
-    												@forelse($category as $key)
-    												<option value="{{ $key->id }}">{{ $key->name }}</option>
-    												@empty
+    												<?php $__empty_1 = true; $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+    												<option value="<?php echo e($key->id); ?>"><?php echo e($key->name); ?></option>
+    												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
     													N/A
-    												@endforelse
+    												<?php endif; ?>
     											</select> 
     										</div>
     										<div class="col-lg-6 mb-3">
     										    <label class="form-label">News Country</label>
     											<select class="form-select" name="country"> 
     												<option value="">News Country</option>
-    												@forelse($country as $key)
-    												<option value="{{ $key->nicename }}">{{ $key->nicename }}</option>
-    												@empty
+    												<?php $__empty_1 = true; $__currentLoopData = $country; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+    												<option value="<?php echo e($key->nicename); ?>"><?php echo e($key->nicename); ?></option>
+    												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
     													N/A
-    												@endforelse
+    												<?php endif; ?>
     											</select> 
     										</div>
 										</div>
                                         <div class="col-xl-12 mb-3">
                                             <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">News Content</label>
                                             <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-                                            @php $totalcredit = DB::table('news_list')->where('credit',1)->where('userid',Auth::id())->count(); 
+                                            <?php $totalcredit = DB::table('news_list')->where('credit',1)->where('userid',Auth::id())->count(); 
                                                 $firstdate = date('Y-m-01');
                                                 $lastdate = date('Y-m-t');
                                                 $todaydate = date('Y-m-d');
-                                            @endphp 
-                                            @if(Auth::user()->user_value == 'company' and $totalcredit < 4 and $todaydate >= $firstdate and $todaydate <= $lastdate )
+                                            ?> 
+                                            <?php if(Auth::user()->user_value == 'company' and $totalcredit < 4 and $todaydate >= $firstdate and $todaydate <= $lastdate ): ?>
                                             <input type="checkbox" id="creditpost" name="creditpost" value="1">
-                                            <input type="hidden" value="{{ Auth::user()->subscription_id }}" id="subsid">
-                                            <label for="vehicle1" style="margin-top:10px;">Marketing Post<span class="badge badge-soft-success font-size-10" style="margin-left: 10px;">{{$totalcredit}}/4 monthly credits used.</span>@if(Auth::user()->subscription_id ==1)<a href="{{ URL::to('stripe') }}"><span class="badge badge-soft-warning font-size-10" style="margin-left: 10px;">Upgrade</span></a>@endif</label>
-                                            @endif
+                                            <input type="hidden" value="<?php echo e(Auth::user()->subscription_id); ?>" id="subsid">
+                                            <label for="vehicle1" style="margin-top:10px;">Marketing Post<span class="badge badge-soft-success font-size-10" style="margin-left: 10px;"><?php echo e($totalcredit); ?>/4 monthly credits used.</span><?php if(Auth::user()->subscription_id ==1): ?><a href="<?php echo e(URL::to('stripe')); ?>"><span class="badge badge-soft-warning font-size-10" style="margin-left: 10px;">Upgrade</span></a><?php endif; ?></label>
+                                            <?php endif; ?>
                                             </div>
                                         </div>
-                                        @if(Auth::id() == 1)
+                                        <?php if(Auth::id() == 1): ?>
                                         <div class="col-xl-12 mb-3">
                                             <input type="checkbox" id="sendemail" name="sendemail" value="1">
                                             <label for="sendemail" style="margin-top:10px;">Send Email Notification
                                             </div>
                                         </div>
-                                        @endif
+                                        <?php endif; ?>
                                         <div class="col-xl-12"><button type="submit" class="btn btn-primary w-md"></i>Submit</button></div>
                                     </div>
                                     </div>
@@ -288,4 +288,5 @@ function getImg2() {
 
   });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\liverm\resources\views/dashboard/posts/add.blade.php ENDPATH**/ ?>

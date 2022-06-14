@@ -301,6 +301,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <button type="submit" class="btn text-light btn-bg">Login</button>
                           </div>
                         </form>
+                        <div class="social">
+                          <div class="go"><i class="fab fa-google"></i>  Google</div>
+                          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+                        </div>
                         @else
                           <div class="d-grid">
                             <a href="{{ URL::to('/allactivepost') }}" class="btn text-light btn-bg">Logged-in, Go to your Dashboard</a>

@@ -241,7 +241,7 @@ class ProfileController extends Controller
         $edu = Education::where('userid',$id)->orderBy('id','desc')->get();
         $works = Works::where('userid',$id)->orderBy('id','desc')->get();
         $totalpostcount=DB::table("news_list")->where('userid',$id)->where('approval',1)->count();
-        $list=DB::table("news_list")->where('userid',$id)->where('approval',1)->paginate(5);
+        $list=DB::table("news_list")->where('userid',$id)->where('approval',1)->orderBy('id','desc')->paginate(5);
                 $publisherfollowlist = DB::table("follower_list")->where('userid',Auth::user()->id)->get();
         if(count($publisherfollowlist) > 0){
         foreach($publisherfollowlist as $key){
