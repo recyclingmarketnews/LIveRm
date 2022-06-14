@@ -460,12 +460,12 @@ body[data-layout-mode=dark][data-topbar=light] .noti-icon i {
 }
 
 .footer {
-    /*bottom: 0;*/
+    bottom: 0;
     padding: 10px calc(20px / 2);
-    /*position: absolute;*/
-    /*right: 0;*/
+    position: absolute;
+    right: 0;
     color: #74788d;
-    /*left: 255px;*/
+    left: 255px;
     background: white;
 }
 

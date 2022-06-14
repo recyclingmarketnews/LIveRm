@@ -29,7 +29,7 @@ class StripePaymentController extends Controller
         $stype = $request->stype;
         $subdata = DB::table('subscriptions')->where('id',$stype)->first();
         $userdata = DB::table('users')->where('id',$request->userid)->first();
-        Stripe\Stripe::setApiKey("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");
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
                 "amount" => $subdata->price * 100,
                 "currency" => "usd",
