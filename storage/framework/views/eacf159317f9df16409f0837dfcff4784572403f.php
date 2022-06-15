@@ -314,6 +314,14 @@ label.star:before {
     inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
 }
 /** end rating **/
+#custom-tooltip {
+    position: absolute;
+    display: none;
+    padding: 5px 12px;
+    background-color: #000000df;
+    border-radius: 4px;
+    color: #fff;
+}
 </style>
 <div class="main-content">
                 <div class="page-content">
@@ -352,7 +360,7 @@ label.star:before {
                                                       <?php if($newsdetails->videolink != ''): ?>
                                                         <div class="carousel-item active">
                                                             <iframe width="100%" height="315"
-                                                                src="<?php echo e($newsdetails->videolink); ?>">
+                                                                src="https://<?php echo e($newsdetails->videolink); ?>">
                                                             </iframe>
                                                         </div>
                                                         <?php endif; ?>                                                        
@@ -471,19 +479,19 @@ label.star:before {
                                                                     ?>
                                                                     <div class ="frame">
                                                                             <div class="text-center">
-                                                                            <a href="https://www.facebook.com/sharer.php?u=<?php echo e(URL::to('share/'.$newsheading)); ?>" class="btnshare">
+                                                                            <a target="_blank" href="https://www.facebook.com/sharer.php?u=<?php echo e(URL::to('share/'.$newsheading)); ?>" class="btnshare">
                                                                                 <i class="fa fa-facebook-f" style="color: #3b5998;"></i>
                                                                             </a>
                                                                             <p class="mt-2">Facebook</p>
                                                                             </div>
                                                                             <div  class="text-center">
-                                                                                <a href="https://twitter.com/share?u=<?php echo e(URL::to('share/'.$newsheading)); ?>" class="btnshare">
+                                                                                <a  target="_blank" href="https://twitter.com/intent/tweet?url=<?php echo e(URL::to('share/'.$newsheading)); ?>&text=<?php echo e($newsdetails->heading); ?>" class="btnshare">
                                                                                     <i class="fa fa-twitter" style="color: #00acee;"></i>
                                                                                 </a>
                                                                                 <p  class="mt-2">Twitter</p>                                                                          
                                                                             </div>
                                                                             <div  class="text-center">
-                                                                                <a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo e(URL::to('share/'.$newsheading)); ?>" class="btnshare">
+                                                                                <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo e(URL::to('share/'.$newsheading)); ?>" class="btnshare">
                                                                                     <i class="fa fa-linkedin" style="color:#0e76a8;"></i>
                                                                                 </a>  
                                                                                 <p  class="mt-2">LinkedIn</p>
@@ -493,8 +501,10 @@ label.star:before {
                                                                             <a onclick="myFunction()" href="#" class="btnshare">
                                                                                 <i class="fa fa-link"></i>
                                                                             </a>
+                                                                            
                                                                             <p  class="mt-2">Copy Link</p>
                                                                             </div>
+                                                                            <span id="custom-tooltip">copied!</sapn>
                                                                     </div>
                                                                     <!--$newsheading = strtolower(trim(preg_replace('/[\s-]+/', '-', preg_replace('/[^A-Za-z0-9-]+/', '-', preg_replace('/[&]/', 'and', preg_replace('/[\']/', '', iconv('UTF-8', 'ASCII//TRANSLIT', $newsheading))))), '-')); -->
                                                                     <input type="text" class="form-control d-none" value="<?php echo e(URL::to('share/'.$newsheading)); ?>" id="myInput">
@@ -697,6 +707,10 @@ function myFunction() {
 
   /* Copy the text inside the text field */
   navigator.clipboard.writeText(copyText.value);
+  document.getElementById("custom-tooltip").style.display = "inline";
+    setTimeout( function() {
+        document.getElementById("custom-tooltip").style.display = "none";
+    }, 1000);
 
 }
 </script>

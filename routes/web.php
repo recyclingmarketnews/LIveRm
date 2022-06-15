@@ -11,7 +11,7 @@ use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Middleware\CheckSubscription;
 use App\Http\Middleware\EmailVerify;
-
+use App\Http\Controllers\SocialAuth\GoogleSocialiteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +22,11 @@ use App\Http\Middleware\EmailVerify;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+ 
+ 
+Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
+Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
 Route::post('/onesignal/save-player-id',[ProductController::class,'saveplayerid']);
 Route::get('/',[FrontController::class,'index']);
@@ -54,7 +59,7 @@ Route::get('/linkemailverify/{email}/{code}',[AuthController::class,'linkemailve
 Route::get('/emailverficationpage/{id}',[AuthController::class,'emailverficationpage'])->name('emailverficationpage');
 Route::get('/resendemailverify/{email}',[AuthController::class,'resendemailverify'])->name('resendemailverify');
 Route::get('share/{slug}',[ProductController::class,'sharesinglenews'])->name('sharesinglenews');
-
+Route::get('autotrialemail',[FrontController::class,'autotrialemail'])->name('autotrialemail');
 
 Route::middleware([CheckSubscription::class])->group(function(){
     

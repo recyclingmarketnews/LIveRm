@@ -174,6 +174,50 @@ input:focus, button:focus {
 .fontsize14{
     font-size:14px;
 }
+.social-icon button {
+    font-size: 20px;
+    color: white;
+    height: 50px;
+    width: 50px;
+    background: #45aba6;
+    border-radius: 60%;
+    margin: 0px 10px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+button:hover{
+  opacity: 0.9;
+}
+.seperator {
+  float: left;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  margin: 50px 0 0;
+}
+.seperator b {
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+  background: #fff;
+  display: inline-block;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  position: relative;
+  top: -22px;
+  z-index: 1;
+}
+.social-icon {
+    width: 100%;
+    font-size: 20px;
+
+    color: #fff;
+    text-align: center;
+ 
+}
     </style>
 </head>
 
@@ -301,9 +345,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <button type="submit" class="btn text-light btn-bg">Login</button>
                           </div>
                         </form>
-                        <div class="social">
-                          <div class="go"><i class="fab fa-google"></i>  Google</div>
-                          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+                        <div class="seperator"><b>or</b></div>
+                        <p class="text-center">Sign in with your social media account</p>
+                        <!-- Social login buttons -->
+                        <div class="social-icon">
+                          <a href="{{ url('auth/google') }}"><button type="button" style="background:#ea4335;"><i class="fa fa-google"></i></button></a>
+                          <!-- <button type="button" style="background:#3b5998;"><i class="fa fa-facebook"></i></button>
+                          <button type="button" style="background:#000000;" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="Login With Apple"><i class="fa fa-apple"></i></button> -->
                         </div>
                         @else
                           <div class="d-grid">
