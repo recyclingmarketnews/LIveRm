@@ -74,7 +74,7 @@
 																							<tr>
 																								<td align="left" valign="top" class="r20-i nl2go-default-textstyle" style="color: #3b3f44; font-family: arial,helvetica,sans-serif; font-size: 18px; line-height: 1.5; text-align: left; word-wrap: break-word;">
 																									<div>
-																										<p style="margin: 0;"><span style="font-family: 'Times new roman', times, serif; font-size: 15px;">Hi {{$username}}</span></p>
+																										<p style="margin: 0;"><span style="font-family: 'Times new roman', times, serif; font-size: 15px;">Hi {{$username}}</span></p>
 																										<p style="margin: 0;"> </p>
 																										<p style="margin: 0;"><span style="font-family: 'Times new roman', times, serif; font-size: 15px;">Thanks for signing up for Recycling Market News! We wanted to give you a heads up that in few days, your free trial comes to an end.</span></p>
 																										<p style="margin: 0;"> </p>

@@ -358,11 +358,7 @@ class ProductController extends Controller
                   $message->to($usersdata->email);
                   $message->subject('Your Post is under review');
             });         
-            Mail::send('email.forapprovaltoadmin', ['heading' => $request->heading], function($message) use($usersdata){
-                  $message->to('z.bajwa@globalrecyclingmarket.com');
-                  //info@recyclingmarketnews.com
-                  $message->subject(Auth::user()->fname.' Post News for approval');
-            });         
+           
             Mail::send('email.forapprovaltoadmin', ['heading' => $request->heading], function($message) use($usersdata){
                   $message->to('farhan@globalrecyclingmarket.com');
                   //info@recyclingmarketnews.com

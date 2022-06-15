@@ -14,6 +14,54 @@ use Carbon\Carbon;
 use URL;
 class FrontController extends Controller
 {
+        //
+    public function autotrialemail(){
+        $message = '';
+        $date = date('Y-m-d');
+        $userlist = DB::table('users')->where('id',61)->get();
+        if(count($userlist) > 0){
+            foreach($userlist as $key){
+                $subscriptionid = $key->subscription_id;
+                if($subscriptionid == 1){
+                    if($key->trialendingemail == 0){
+                        if($key->e_date < $date){
+                            Mail::send('email.TrialEndingAfterEmail', ['username' => $key->fname], function($message) use($key){
+                                    $message->to($key->email);
+                                    $message->subject($key->fname.' Your trial has ended');
+                            });                            
+                            $array = array(
+                                'trialendingemail' => 1
+                            );    
+                            DB::table('users')->where('id',$key->id)->update($array);
+                        }
+                    }             
+                    if($key->trialendingsoonemail == 0){
+                        $edate = $key->e_date;
+                        $to = \Carbon\Carbon::parse($key->e_date);
+                        $from = \Carbon\Carbon::parse($date);
+                        $days = $to->diffInDays($from);   
+                        if($days == 2){
+                            Mail::send('email.TrialEndingSoonEmail', ['username' => $key->fname], function($message) use($key){
+                                    $message->to($key->email);
+                                    $message->subject($key->fname.' Your trial ends soon');
+                            });                             
+                            $array = array(
+                                'trialendingsoonemail' => 1
+                            );    
+                            DB::table('users')->where('id',$key->id)->update($array);
+                        }
+                    }             
+                }
+
+            }
+        }
+    }        
+    public function testinsert(){
+        $array = array(
+            "name" => "testdfd"
+        );
+        DB::table('testcron')->insert($array);
+    }
     //
     public function testinvoice(){
         return view('email.offilineUserMessageToEmail');

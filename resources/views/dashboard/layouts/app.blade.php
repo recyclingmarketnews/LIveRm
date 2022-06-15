@@ -262,13 +262,14 @@
 }
 
 .loader{
-    display:none;
+    display: none;
     position: fixed;
-    z-index:999999999999999;
-    width: 100%;
+    z-index: 999999999999999;
+    width: 104%;
     height: 100%;
-    background: #f9f9f9  url({{ asset('assets/images/loader.gif') }}) center center no-repeat;
+    background: #000000 url(https://recyclingmarketnewstrial.com/assets/images/loader.gif) center center no-repeat;
     opacity: .8;
+    background-size: 150px;
 }
 /*////////*/
         </style>
