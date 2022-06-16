@@ -487,7 +487,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <div data-simplebar="init" style="max-height: 250px;"><div class="simplebar-wrapper" style="margin: 0px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: auto; overflow: hidden; padding: 7px !important;" ><div class="simplebar-content" style="padding: 0px;">
                                     <?php $notilist = DB::table('notifications')->where('userid',Auth::user()->id)->where('read',0)->orderBy('id','desc')->get(); ?>
                                     @forelse($notilist as $key)
-                                    <a href="" class="text-reset notification-item">
+                                    @if($key->postid == 9999999999)
+                                        <a href="{{ URL::to('/viewprofile/'.$key->postid) }}" class="text-reset notification-item">
+                                    @else
+                                        <a href="{{ URL::to('/singlenews/'.$key->postid) }}" class="text-reset notification-item">
+                                    @endif
                                         <?php $userdata = DB::table('users')->where('id',$key->fromuserid)->first(); ?>
                                         <div class="d-flex border-bottom align-items-start" style="padding: 10px;">
                                             <div class="flex-shrink-0">

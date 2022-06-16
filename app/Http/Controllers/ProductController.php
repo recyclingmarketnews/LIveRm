@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\Helper;
 use App\Models\Product;
 use App\Models\Rating;
 use App\Models\Like;
@@ -87,6 +88,7 @@ class ProductController extends Controller
             "reason" => $request->reason
         );
         $noti = array(
+            "postid" =>  $postdata->id,
             "userid" =>  $postdata->userid,
             "fromuserid" => Auth::id() ,
             "message" => "Oops! Your Post rejected.Please check rejection reason and submit again.",
@@ -145,6 +147,7 @@ class ProductController extends Controller
             "approval" => 1
         );
         $noti = array(
+            "postid" =>  $postdata->id,
             "userid" =>  $postdata->userid,
             "fromuserid" => Auth::id() ,
             "message" => "Congratulations! Your post is approved! ",
@@ -682,6 +685,7 @@ class ProductController extends Controller
                 $totallike = DB::table('likes')->where('postid',$key->id)->count();
                 $totalcomment = DB::table('comments')->where('postid',$key->id)->count();
                 $cid = $key->category_id; $catdata = DB::table('product_category')->where('id',$cid)->first(); 
+                if(Auth::user()->postview == 'list'){
                 $output.='<div class="card me-2 p-3 results" style="width:100%; margin-top:10px;    padding-bottom: 5px !important;">
                                 <div class="row">
                           
@@ -753,6 +757,21 @@ class ProductController extends Controller
                                     </div>
                                 </div>
                             </div>';
+                }else{
+                     $cid = $key->category_id; $catdata = DB::table('product_category')->where('id',$cid)->first(); 
+                     $likevariable = Helper::UserHasLikePost($key->id) ? 'like-post' : 'notlike-post';
+                     $output.='<div class="col-xl-4 col-lg-4 col-s-12 col-xs-12 mb-2" style="padding-right:0px;">
+                      <figure><a href="'.URL::to('singlenews/'.$key->id).'"><img src="'.asset('uploads/post/'.$key->image).'"></a></figure>
+                      <a style="position: absolute;bottom: 5px;font-size: 18px;color: white;padding: 0 10px;background: rgb(0 0 0 / 50%);font-weight: bold;letter-spacing: 0.5px;" href="'.URL::to('singlenews/'.$key->id).'">'. $key->heading .'</a>
+                      <div style="position: absolute;    top: 0;">
+                          <a href="#"><span class="badge badge-soft-warning  font-size-10" style="background: #fc931d;color: #fff;margin-left: 10px;" >'.$key->country.'</span></a>
+                          <a href="#"><span class="badge badge-soft-primary  font-size-10" style="background: #2daae1;color: #fff;" >'.$catdata->name.'</span></a>                                
+                      </div>
+                      <div style="position: absolute;top:3px;right: 8px; padding: 8px;" data-id="'.$key->id.'">
+                              <i id="like{{$key->id}}" class="fa fa-thumbs-up font-size-22 '.$likevariable.'"></i>
+                      </div>
+                    </div>';                   
+                }
                 }
             return Response($output);
            }
@@ -1000,6 +1019,7 @@ class ProductController extends Controller
         $res = DB::table('comments')->insert($array);
         
         $noti = array(
+            "postid" =>  $postdata->id,
             "userid" =>  $postdata->userid,
             "fromuserid" => Auth::id() ,
             "message" => "Comment on your post",
@@ -1055,6 +1075,7 @@ class ProductController extends Controller
                 "created_at" => date('Y-m-d H:i:s')
             );
             $noti = array(
+                "postid" =>  9999999999,
                 "userid" =>  $id,
                 "fromuserid" => $userid,
                 "message" => "Following you",
@@ -1073,6 +1094,7 @@ class ProductController extends Controller
             $userid = Auth::user()->id;
              $posterdata = DB::table('users')->where('id',$id)->first();
             $noti = array(
+                "postid" =>  9999999999,
                 "userid" =>  $id,
                 "fromuserid" => $userid,
                 "message" => "Unfollow you",
@@ -1098,6 +1120,7 @@ class ProductController extends Controller
         $rating->value = $request->input('star');
         $rating->save();
         $noti = array(
+            "postid" =>  $postdata->id,
             "userid" =>  $postdata->userid,
             "fromuserid" => Auth::id() ,
             "message" => "Gave ratings to your post",
@@ -1119,6 +1142,7 @@ class ProductController extends Controller
         $like->postid = $id;
         $like->save();
         $noti = array(
+            "postid" =>  $postdata->id,
             "userid" =>  $postdata->userid,
             "fromuserid" => Auth::id() ,
             "message" => "Liked your post",
@@ -1142,6 +1166,7 @@ class ProductController extends Controller
         $like->postid = $id;
         $like->save();
         $noti = array(
+            "postid" =>  $postdata->id,
             "userid" =>  $postdata->userid,
             "fromuserid" => Auth::id() ,
             "message" => "Liked your post",
@@ -1160,6 +1185,7 @@ class ProductController extends Controller
          $posterdata = DB::table('users')->where('id',$postdata->userid)->first();
         Like::where('userid',Auth::id())->where('postid',$id)->delete();
         $noti = array(
+            "postid" =>  $postdata->id,
             "userid" =>  $postdata->userid,
             "fromuserid" => Auth::id() ,
             "message" => "Unliked your post",
@@ -1178,6 +1204,7 @@ class ProductController extends Controller
          $posterdata = DB::table('users')->where('id',$postdata->userid)->first();
         Like::where('userid',Auth::id())->where('postid',$id)->delete();
         $noti = array(
+            "postid" =>  $postdata->id,
             "userid" =>  $postdata->userid,
             "fromuserid" => Auth::id() ,
             "message" => "Unliked your post",

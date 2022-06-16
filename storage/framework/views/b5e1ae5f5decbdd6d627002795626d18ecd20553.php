@@ -17,12 +17,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="google-site-verification" content="M4iUs-1kfBy2WzzqFhpB1pZ5SsxOTi7WdwdOB6CDM0o" />
 
-    <link rel="shortcut icon" href="{{ asset('front/images/favicon.png')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/bootstrap.min.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/owl.carousel.min.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/ac-globalnav.built.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/ac-localnav.built.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('front/ac-globalfooter.built.css')}}" />
+    <link rel="shortcut icon" href="<?php echo e(asset('front/images/favicon.png')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('front/bootstrap.min.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('front/owl.carousel.min.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('front/ac-globalnav.built.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('front/ac-localnav.built.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('front/ac-globalfooter.built.css')); ?>" />
    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
 
@@ -42,9 +42,9 @@
 
 
     <link rel="stylesheet" href="/wss/fonts?families=SF+Pro,v3|SF+Pro+Icons,v3">
-    <link rel="stylesheet" href="{{ asset('front/main.built.css')}}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('front/overview.built.css')}}" type="text/css" />
-    <script src="{{ asset('front/head.built.js')}}" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="<?php echo e(asset('front/main.built.css')); ?>" type="text/css" />
+    <link rel="stylesheet" href="<?php echo e(asset('front/overview.built.css')); ?>" type="text/css" />
+    <script src="<?php echo e(asset('front/head.built.js')); ?>" type="text/javascript" charset="utf-8"></script>
     <style>
         .scrollFade {
   opacity: 1;
@@ -127,96 +127,44 @@ ul.bottom_links .nav-item .nav-link{
 .buttons a{
   color: #FCBA7F;
 }
-.btn-bg {
-  background: #1abf7f !important;
-  padding: 12px;
+.ttm-page-title-row { 
+    position: relative;
+    background: #c8f0e0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
-.btn-bg:hover{
-    background:#000 !important;
-}
-.inputedit{
+div.ttm-page-title-row > .ttm-bg-layer { background-color: rgba(24,35,51,0.85); }
+.ttm-page-title-row { 
     display: block;
-    width: 100%;
-    padding: 12px;
-    font-size: 0.875rem !important;
+    padding: 70px 0;
+    z-index: 0;
+}
+.title-box .page-title-heading h1 {
+    text-transform: capitalize;
+    font-size: 40px;
+    line-height: 48px;
+    margin-bottom: 10px;
+    display: inline-block;
+    font-weight: 700;
+}
+.title-box .page-title-heading{ position: relative; }
+.breadcrumb-wrapper span {
     font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 9px;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
-input:focus, button:focus {
-  border: 1px solid rgb(26 191 127) !important;
-  box-shadow: none !important;
-  outline: 0;
+    text-transform: capitalize;
+    font-size: 16px;
+    line-height: 25px;
 }
 
-.form-check-input:checked {
-  background-color: var(--main-bg) !important;
-  border-color: var(--main-bg) !important;
-}
-
-.card, .btn, input{
-    border-radius: 10px;
-}
-.headingcolor{
-    color:#4dcd9c;
-}
-.fontsizelogincard{
-        font-size: 0.875rem;
-}
-.fontsize14{
-    font-size:14px;
-}
-.social-icon button {
-    font-size: 20px;
-    color: white;
-    height: 50px;
-    width: 50px;
-    background: #45aba6;
-    border-radius: 60%;
-    margin: 0px 10px;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-}
-button:hover{
-  opacity: 0.9;
-}
-.seperator {
-  float: left;
-  width: 100%;
-  border-top: 1px solid #ccc;
-  text-align: center;
-  margin: 50px 0 0;
-}
-.seperator b {
-  width: 40px;
-  height: 40px;
-  font-size: 16px;
-  text-align: center;
-  line-height: 40px;
-  background: #fff;
-  display: inline-block;
-  border: 1px solid #e0e0e0;
-  border-radius: 50%;
-  position: relative;
-  top: -22px;
-  z-index: 1;
-}
-.social-icon {
-    width: 100%;
-    font-size: 20px;
-
-    color: #fff;
-    text-align: center;
- 
+.ttm-row{ padding: 90px 0;}
+.ttm-search-overlay,
+.ttm-rounded-shadow-box, div.product ul.tabs li.active a:before,
+.coupon_toggle .coupon_code,
+#payment .payment_box,
+.tooltip-top:before, .tooltip:before, [data-tooltip]:before,
+.section-title.with-desc .title-header:before,
+#site-header-menu #site-navigation .menu > ul{
+    border-top-color: #2d4a8a !important; 
 }
     </style>
 </head>
@@ -227,10 +175,10 @@ button:hover{
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
   <!--<div class="wrapper">-->
-    <!--<img src="{{ asset('front/images/cookie.png')}}" alt="">-->
+    <!--<img src="<?php echo e(asset('front/images/cookie.png')); ?>" alt="">-->
   <!--  <div class="content" style="padding-left: 10px; align-items: center;width: 90%;display: flex;">-->
       <!--<header>Cookies Consen</header>-->
-  <!--    <p class="color:white;">Notice. Recycling Market News uses cookies to provide necessary website functionality, improve your experience and analyze our traffic. By using our website, you agree to our <a style="display: contents;" href="{{ asset('front/pdffile/Privacy Policy - Recycling Market News.pdf')}}" class="nav-link">Privacy Policy</a> and our <a style="display: contents;" href="{{ asset('front/pdffile/Cookie Policy - Recycling Market News.pdf')}}" class="nav-link">Cookies Policy.</a></p>-->
+  <!--    <p class="color:white;">Notice. Recycling Market News uses cookies to provide necessary website functionality, improve your experience and analyze our traffic. By using our website, you agree to our <a style="display: contents;" href="<?php echo e(asset('front/pdffile/Privacy Policy - Recycling Market News.pdf')); ?>" class="nav-link">Privacy Policy</a> and our <a style="display: contents;" href="<?php echo e(asset('front/pdffile/Cookie Policy - Recycling Market News.pdf')); ?>" class="nav-link">Cookies Policy.</a></p>-->
   <!--    <div class="buttons">-->
   <!--      <button class="item">Accept</button>-->
   <!--    </div>-->
@@ -249,134 +197,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <meta name="ac-gn-store-key" content="SFX9YPYY9PPXCU9KH" />
     <aside id="ac-gn-segmentbar" class="ac-gn-segmentbar" lang="en-US" dir="ltr" data-strings="{ 'exit': 'Exit', 'view': '{%STOREFRONT%} Store Home', 'segments': { 'smb': 'Business Store Home', 'eduInd': 'Education Store Home', 'other': 'Store Home' } }"></aside>
     <input type="checkbox" id="ac-gn-menustate" class="ac-gn-menustate" />
-    <header class="pt-4 header">
-        <div class="container">
-            <div class="text-center mb-4">
-                <a href="{{ URL::to('/') }}" class=""><img class="img-fluid" src="{{ asset('front/images/logo.png')}}" width="380px" /></a>
-            </div>
-
-        </div>
-    </header>
+    <?php echo $__env->make('partial/header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!--<div class="ac-gn-blur"></div>-->
     <div id="ac-gn-curtain" class="ac-gn-curtain"></div>
     <!-- <div id="ac-gn-placeholder" class="ac-nav-placeholder"></div> -->
 
-    <script type="text/javascript" src="{{ asset('front/ac-globalnav.built.js')}}"></script>
+    <script type="text/javascript" src="<?php echo e(asset('front/ac-globalnav.built.js')); ?>"></script>
 
 
 
-    <script src="{{ asset('front/ac-analytics.js')}}" type="text/javascript" charset="utf-8"></script>
-    <script src="{{ asset('front/auto-init.js')}}" type="text/javascript" charset="utf-8"></script>
+    <script src="<?php echo e(asset('front/ac-analytics.js')); ?>" type="text/javascript" charset="utf-8"></script>
+    <script src="<?php echo e(asset('front/auto-init.js')); ?>" type="text/javascript" charset="utf-8"></script>
 
     <input type="checkbox" id="ac-ln-menustate" class="ac-ln-menustate" />
 
     <label id="ac-ln-curtain" for="ac-ln-menustate"></label>
-    <script type="text/javascript" src="{{ asset('front/ac-localnav.built.js')}}"></script>
+    <script type="text/javascript" src="<?php echo e(asset('front/ac-localnav.built.js')); ?>"></script>
 
     <main id="main" class="main" role="main" data-page-type="overview">
-        <div class="row m-0 pr-0">
-        <section class="col-sm-12 col-md-6 col-lg-6 col-xl-6 section section-hero section1-hero">
-            <div class="hero-top d-block" data-component-list="HeroTop" data-anim-scroll-group='HeroTop'>
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="hero-top-content">
-                        <div class="carousel-inner">
-                            <div class="hero-copy large-10 large-centered medium-12">
-                                <div class="carousel-item active">
-                                    <figure style="height: 100px;" role="presentation"></figure>
-                                    <h1 class="hero-title typography-body-bold">Recycling Market News</h1>
-                                    <h2 class="hero-headline typography-section-headline">Read all the latest news from major publishers in one place!</h2>
-                     
-	
-                                </div>
-                                <div class="carousel-item">
-                                    <figure style="height: 100px;" role="presentation"></figure>
-                                    <h1 class="hero-title typography-body-bold">Recycling Market News</h1>
-                                    <h2 class="hero-headline typography-section-headline">Recycling News,<br />Insights and Opinions by Recyclers.</h2>
-      
-                                </div>
- <!--                               <div class="carousel-item">-->
- <!--                                   <figure style="height: 100px;" role="presentation"></figure>-->
- <!--                                   <h1 class="hero-title typography-body-bold">Recycling Market News</h1>-->
- <!--                                   <h2 class="hero-headline typography-section-headline">Connect with,<br />Recyclers and Chat</h2>-->
- <!--                       <a href="{{ URL::to('signupselect') }}" style="color:white;"><button class="button-news button-grand button-trial-download"  -->
- <!--                                       >-->
-	<!--Sign Up</button></a>-->
- <!--                                   <a href="{{ URL::to('signupselect') }}" style="color:white; display: inline-grid;"><button class="button-news button-grand button-trial-modal">-->
-	<!--Sign Up</button><span style="color: black;font-size: 10px; display:none;">No Credit Card Required</span></a>-->
- <!--                               </div>-->
-                            </div>
+        <div class="ttm-page-title-row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12"> 
+                        <div class="title-box text-center">
+                            <div class="page-title-heading">
+                                <h1 class="title">About Us</h1>
+                            </div><!-- /.page-title-captions -->
+                            <div class="breadcrumb-wrapper">
+                                <span>
+                                    <a title="Homepage" href="<?php echo e(URL::to('/')); ?>" style="color: #2b996d;"><i class="ti ti-home"></i>&nbsp;&nbsp;Home</a>
+                                </span>
+                                <span class="ttm-bread-sep">&nbsp; : : &nbsp;</span>
+                                <span>About Us</span>
+                            </div>  
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="col-sm-12 col-md-12 col-lg-6 col-xl-6 section section-hero">
-              <div class="container">
-                <div class="d-flex justify-content-center mt-5 mt-custom">
-                  <div class="col-lg-12 col-xl-6 col-md-12 col-sm-12">
-                    <div class="card shadow">
-                      <div class="card-title text-center border-bottom">
-                        @if(Auth::id() != '') 
-                            <h2 class="p-3 headingcolor">Welcome Back</h2>
-                        @else
-                            <h2 class="p-3 headingcolor">Sign in!</h2>
-                        @endif
-                      </div>
-                      <div class="card-body">
-                      @if ($alertFm = Session::get('message'))
-                            <div class="alert alert-{{Session::get('type')}} alert-block">
-                                
-                                <strong class="fontsize14">{{ $alertFm }}</strong>
-                            </div>
-                        @endif
-                        @if(Auth::id() == '') 
-                        <form action="{{ URL::to('submit_frontlogin'); }}" method="post">
-                            @csrf
-                          <div class="mb-4">
-                            <input type="text" class="inputedit" required name="email" placeholder="Email" />
-                          </div>
-                          <div class="mb-4">
-                            <input type="password" class="inputedit" required name="password" placeholder="Password" />
-                          </div>
-                          <div class="mb-4">
-                                <a href="{{ URL::to('forgotpassword'); }}" class="text-muted fontsizelogincard">Forgot password?</a>
-                          </div>
-                          <div class="d-grid">
-                            <button type="submit" class="btn text-light btn-bg">Login</button>
-                          </div>
-                        </form>
-                        <div class="seperator"><b>or</b></div>
-                        <p class="text-center">Sign in with your social media account</p>
-                        <!-- Social login buttons -->
-                        <div class="social-icon">
-                          <a href="{{ url('auth/google') }}"><button type="button" style="background:#ea4335;"><i class="fa fa-google"></i></button></a>
-                          <a href="{{ url('auth/facebook') }}"> <button type="button" style="background:#3b5998;"><i class="fa fa-facebook"></i></button></a>
-                         <!-- <button type="button" style="background:#000000;" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="Login With Apple"><i class="fa fa-apple"></i></button> -->
-                        </div>
-                        @else
-                          <div class="d-grid">
-                            <a href="{{ URL::to('/allactivepost') }}" class="btn text-light btn-bg">Logged-in, Go to your Dashboard</a>
-                          </div>
-                        @endif
-                        @if(Auth::id() == '') 
-                        <div class="mt-4 text-center">
-                            <p class="mb-0 fontsizelogincard">Don't have an account ?
-                            <select class="text-success" name="sigupvalue" id="signupvalue" style=" padding:0 10px; border:none;-webkit-appearance: none;  -moz-appearance: none;  text-indent: 1px; text-overflow: '';">
-                                <option value="">Create Account</option>
-                                <option value="https://recyclingmarketnews.com/individualsignup">Individual</option>
-                                <option value="https://recyclingmarketnews.com/companysignup">For Company</option>
-                            </select>
-                            <!--<a href="https://recyclingmarketnews.com/signup" class="fw-medium text-success"> Sign Up now </a> </p>-->
-                        </p></div>
-                        @endif
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        </section>
-        </div>
-        <section class="section section-hero pb-5 pt-5" data-analytics-section-engagement="name:hero">
+                    </div><!-- /.col-md-12 -->  
+                </div><!-- /.row -->  
+            </div><!-- /.container -->                      
+        </div>        
+        <section class="section section-hero pb-5" data-analytics-section-engagement="name:hero">
             <div class="hero-bottom red-bg" data-anim-scroll-group='HeroBottom'>
                 <div class="hero-bottom-content">
                     <div data-component-list="MarqueeGalleryController">
@@ -431,61 +290,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             
             </div>
-        </section>        
-        <section class="py-5" style="    background: #c8f0e0;">
+        </section>
+        <!--  -->
+        <section class="section section-apple-one" style="margin-bottom: 71px;">
             <div class="section-content">
-                <div class="row topproducts-slidee owl-carousel">
-                    @foreach($list as $list)
-                    <div class="post-slide">
-                        <div class="post-img">
-                            @if($list->image == '')
-                            <img src="{{ asset('front/images/homenewscard.jpg')}}" alt="">
-                            @else
-                            <img src="{{ asset('uploads/post/'.$list->image)}}" alt="">
-                            @endif
-                            
-                            <a href="{{ URL::to('signupselect') }}" class="over-layer"><i class="fa fa-link"></i></a>
+                <div class="apple-one">
+                    <div class="banner-content">
+                      <img class="img-fluid" src="<?php echo e(asset('front/images/logo.png')); ?>" width="350px">
+                        <div class="banner-copy-container row justify-content-center" style="margin-top: 24px !important;">
+                            <p class="banner-headline typography-callout" data-aos="fade-up" data-aos-anchor-placement="top-bottom">Join the community of professional recyclers and get latest <span style="color:#1bbf80;">Updates and Insights</span> of recycling market directly from the source.</p>
+                            <p>$19.99 Per Month</p>
+                            <p>or $227 Per Year</p>
+                            <a href="<?php echo e(URL::to('signupselect')); ?>" class="mt-2">
+                                <button class="button-news button-grand button-trial-modal">Sign Up</button>
+                                </a>
+                                <span style="color: black;font-size: 10px; display:none;">No Credit Card Required</span>
                         </div>
-                        <div class="post-content">
-                            <h3 class="post-title">
-                                <a href="#">{!!Str::limit($list->heading,45)!!}</a>
-                            </h3>
-                            <?php $categories= DB::table('product_category')
-    ->where('id',$list->category_id)
-    ->get(); 
-    foreach($categories as $categories){
-        $cname=$categories->name;
-    }
-    
-    ?>
-                            <!--<p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>-->
-                            <span class="post-date"><i class="bx bx-category icon nav-icon"></i>{!!$cname!!}</span>
-                            <!--<a href="#" class="read-more">read more</a>-->
-                        </div>
+                        <div style="margin: 0 auto;text-align: center;">
+                <img class="img-fluid" src="https://recyclingmarketnewstrial.com/front/images/coming-soon-apptore.png" width="350px" style="align-items: center;padding: 10px 15px;"> 
+            <img class="img-fluid" src="https://recyclingmarketnewstrial.com/front/images/coming-soon-playstore.png" width="350px" style="padding: 10px 15px;">
+            </div>
                     </div>
-                    @endforeach
-
-                    
                 </div>
             </div>
         </section>
-        <!--  -->
-
-
 
 
     </main>
 
-    @include('partial/footer')
+    <?php echo $__env->make('partial/footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-    <script type="text/javascript" src="{{ asset('front/ac-globalfooter.built.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('front/bootstrap.bundle.js')}}"></script>
+    <!--  -->
+    <script type="text/javascript" src="<?php echo e(asset('front/ac-globalfooter.built.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('front/bootstrap.bundle.js')); ?>"></script>
+    <script src="<?php echo e(asset('front/main.built.js')); ?>" type="text/javascript" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="{{ asset('front/owl.carousel.min.js')}}"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
   AOS.init();
 </script>
+    <script src="<?php echo e(asset('front/owl.carousel.min.js')); ?>"></script>
     <script>
         $('.topproducts-slidee').owlCarousel({
             loop: true,
@@ -563,14 +407,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     let checkCookie = document.cookie.indexOf("CookieBy=CodingNepal"); //checking our cookie
     //if cookie is set then hide the cookie box else show it
     checkCookie != -1 ? cookieBox.classList.add("hide") : cookieBox.classList.remove("hide");
-  </script>
-    <script>
-        $(document).ready( function() {
-           $('#signupvalue').change( function() {
-              location.href = $(this).val();
-           });
-        });
-    </script>
+  </script>    
 </body>
 
-</html>
+</html><?php /**PATH C:\xampp\htdocs\liverm\resources\views/about.blade.php ENDPATH**/ ?>
