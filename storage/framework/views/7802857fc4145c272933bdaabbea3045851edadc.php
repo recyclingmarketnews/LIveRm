@@ -350,8 +350,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <!-- Social login buttons -->
                         <div class="social-icon">
                           <a href="<?php echo e(url('auth/google')); ?>"><button type="button" style="background:#ea4335;"><i class="fa fa-google"></i></button></a>
-                          <!-- <button type="button" style="background:#3b5998;"><i class="fa fa-facebook"></i></button>
-                          <button type="button" style="background:#000000;" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="Login With Apple"><i class="fa fa-apple"></i></button> -->
+                          <a href="<?php echo e(url('auth/facebook')); ?>"> <button type="button" style="background:#3b5998;"><i class="fa fa-facebook"></i></button></a>
+                         <!-- <button type="button" style="background:#000000;" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="Login With Apple"><i class="fa fa-apple"></i></button> -->
                         </div>
                         <?php else: ?>
                           <div class="d-grid">
@@ -376,6 +376,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
         </section>
         </div>
+        <section class="section section-hero pb-5 pt-5" data-analytics-section-engagement="name:hero">
+            <div class="hero-bottom red-bg" data-anim-scroll-group='HeroBottom'>
+                <div class="hero-bottom-content">
+                    <div data-component-list="MarqueeGalleryController">
+                        <div class="device-gallery row p-3" style="margin:0;">
+                            <div class="col-lg-6">
+                                <figure class="device">
+                                    <div class="device-hardware image-hero-hardware"></div>
+                                    <div class="device-screen">
+                                        <div class="device-screen-image image-hero-screen-vogue" ></div>
+                                    </div>
+                                </figure>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="text-center">
+                                    <p data-component-list="Callout" class="hero-callout typography-hero-callout large-11 small-12">About Us</span>
+                                    </p>
+                                    <p class="fontsize14" style="text-align: justify;">
+                                    We're not just another news site. We're Recycling Market News, its <span style="font-weight: 700;">run by recyclers, for recyclers.</span>
+                                    </p> 
+                                    <p class="fontsize14" style="text-align: justify;">
+                                    Recycling Market News is a platform that brings industry news, insights, and opinions from the people who know it best: <span style="font-weight: 700;">Recyclers.</span>
+                                    </p> 
+									<p class="fontsize14" style="text-align: justify;">
+                                      Our platform works by allowing recyclers to publish their opinions directly onto our site, in the form of a news article, and allows our readers to rate those articles or recyclers those who published it and decide for themselves if a given market update is trustworthy or not.
+                                    </p>
+                                    <p class="fontsize14" style="text-align: justify;">
+                                    With Recycling market news here to help you identify trustworthy sources and spot bogus information quickly and easily, you won't have to worry about missing out on an opportunity (or being taken advantage of) ever again!
+                                    </p>
+                                    <p class="fontsize14" style="text-align: justify;">
+                                    And when it comes to deciding who's trustworthy and who isn't, we make it easy: each user has their own ratings so you can see at a glance how reliable that person is as an information source or business partner.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+     
+           
+                    </div>
+                    <div class="section-content">
+                        <div class="hero-callouts" data-anim-scroll-group="Callouts">
+                            <p data-component-list="Callout" data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="hero-callout  typography-hero-callout large-11 small-12">The latest news and insights<span class="select"> on recycling markets by reputable Recyclers!</span></p>
+                            <p data-component-list="Callout" data-aos="fade-up" data-aos-anchor-placement="top-bottom"  class="hero-callout  typography-hero-callout large-10 small-12">Discover the most <span class="select">impactful news in your industry directly from the source</span></p>
+                            <p data-component-list="Callout" data-aos="fade-up" data-aos-anchor-placement="top-bottom"  class="hero-callout  typography-hero-callout large-10 small-12"><span class="select">No more text messages</span> about the market update!</p>
+                            <p data-component-list="Callout" data-aos="fade-up" data-aos-anchor-placement="top-bottom"  class="hero-callout  typography-hero-callout large-10 small-12">Publish your own opinion about <span class="select"> supply, demand, pricing, and forecast, and let the recyclers <span style="color:white;">rate</span> your market opinion</span></p>
+                            <p data-component-list="Callout" data-aos="fade-up" data-aos-anchor-placement="top-bottom"  class="hero-callout typography-hero-callout large-11 small-12"><span role="text">Are you a recycler? <span class="select"> What’s your rating in the industry?</span></span>
+                            <p data-component-list="Callout" data-aos="fade-up" data-aos-anchor-placement="top-bottom"  class="hero-callout  typography-hero-callout ">Let the industry <span class="select"> see your reputation as a recycler from your personal ratings</span></p>
+                                <p data-component-list="Callout" data-aos="fade-up" data-aos-anchor-placement="top-bottom"  class="hero-callout  typography-hero-callout large-11 small-12"><span role="text">Use your ratings to <span class="select"> grow your network and get promotion in your company</span></span>
+                                    <p data-component-list="Callout" data-aos="fade-up" data-aos-anchor-placement="top-bottom"  class="hero-callout typography-hero-callout large-11 small-12"><span role="text">Create your presence in the  industry <span class="select"> - Publish your own market update, opinion and insights</span></span>
+                                    </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+        </section>        
         <section class="py-5" style="    background: #c8f0e0;">
             <div class="section-content">
                 <div class="row topproducts-slidee owl-carousel">
@@ -426,6 +482,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script type="text/javascript" src="<?php echo e(asset('front/bootstrap.bundle.js')); ?>"></script>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="<?php echo e(asset('front/owl.carousel.min.js')); ?>"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+  AOS.init();
+</script>
     <script>
         $('.topproducts-slidee').owlCarousel({
             loop: true,

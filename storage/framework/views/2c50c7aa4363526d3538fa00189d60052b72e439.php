@@ -13,7 +13,7 @@
                 "onclick": null,
 				'showDuration': '10000',
 				'hideDuration': '5000',
-				'timeOut': '0',
+				'timeOut': '8000',
 				'extendedTimeOut': '0',
 				'tapToDismiss': false,
 				'showEasing': 'swing',

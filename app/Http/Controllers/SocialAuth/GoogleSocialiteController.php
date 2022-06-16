@@ -17,7 +17,9 @@ class GoogleSocialiteController extends Controller
      */
     public function redirectToGoogle()
     {
-        return Socialite::driver('google')->redirect();
+         return Socialite::driver('google')
+            ->stateless()
+            ->redirect();
     }
        
     /**
@@ -29,10 +31,9 @@ class GoogleSocialiteController extends Controller
     {
         try {
      
-            $user = Socialite::driver('google')->user();
+            $userss = Socialite::driver('google')->stateless()->user();
       
-            $finduser = User::where('social_id', $user->id)->first();
-      
+            $finduser = User::where('social_id', $userss->id)->first();
             if($finduser){
       
                 Auth::login($finduser);
@@ -40,22 +41,25 @@ class GoogleSocialiteController extends Controller
                 return redirect('/allactivepost');
       
             }else{
+                $user = new User();
+                $user->fname = $userss->name;
+                $user->email = $userss->email;
+                $user->password = encrypt('my-google');
+                $user->user_type = 2;
+                $user->user_value = 'individual';
+                $user->start_date = date('Y-m-d');
                 $cdate = date('Y-m-d');
-                $newUser = User::create([
-                    'fname' => $user->name,
-                    'lname' => $user->name,
-                    'email' => $user->email,
-                    'social_id'=> $user->id,
-                    'user_value'=> 'individual',
-                    'social_type'=> 'google',
-                    'user_type' => 2,
-                    'start_date' => date('Y-m-d'),
-                    'e_date' => date('Y-m-d', strtotime($cdate. ' + 14 days')),
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'password' => encrypt('my-google')
-                ]);
+                $user->e_date = date('Y-m-d', strtotime($cdate. ' + 14 days'));
+                $user->user_type = 2;
+                $user->email_verify = 1;
+                $user->created_at = date('Y-m-d H:i:s');
+                $user->social_id = $userss->id;
+                $user->social_type = 'google';
+                $user->save();
+       
+
      
-                Auth::login($newUser);
+                Auth::login($user);
                 return redirect('/allactivepost');
             }
      
@@ -63,4 +67,49 @@ class GoogleSocialiteController extends Controller
             dd($e->getMessage());
         }
     }
+    public function redirectToFB()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+    public function handleCallbackfacebook()
+    {
+        try {
+    
+            $userss = Socialite::driver('facebook')->user();
+     
+            $finduser = User::where('social_id', $userss->id)->first();
+     
+            if($finduser){
+     
+                Auth::login($finduser);
+     
+                return redirect('/allactivepost');
+     
+            }else{
+                $user = new User();
+                $user->fname = $userss->name;
+                $user->email = $userss->email;
+                $user->password = encrypt('my-facebook');
+                $user->user_type = 2;
+                $user->user_value = 'individual';
+                $user->start_date = date('Y-m-d');
+                $cdate = date('Y-m-d');
+                $user->e_date = date('Y-m-d', strtotime($cdate. ' + 14 days'));
+                $user->user_type = 2;
+                $user->email_verify = 1;
+                $user->created_at = date('Y-m-d H:i:s');
+                $user->social_id = $userss->id;
+                $user->social_type = 'facebook';
+                $user->save();
+       
+
+     
+                Auth::login($user);
+                return redirect('/allactivepost');
+            }
+    
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
+    }    
 }

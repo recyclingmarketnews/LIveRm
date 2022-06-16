@@ -30,8 +30,13 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'google' => [
-        'client_id' => '236671442670-ch3i72id699c5mkd3qvdejcval7oujcb.apps.googleusercontent.com',
-        'client_secret' => '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',
-        'redirect' => 'https://recyclingmarketnews.com/allactivepost/',
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => 'https://recyclingmarketnews.com/callback/google',
     ],
+    'facebook' => [
+        'client_id' =>  env('FACEBOOK_CLIENT_ID'),
+        'client_secret' =>  env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => 'https://recyclingmarketnews.com/callback/facebook',
+      ], 
 ];
