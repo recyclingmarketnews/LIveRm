@@ -62,6 +62,7 @@ Route::get('/emailverficationpage/{id}',[AuthController::class,'emailverfication
 Route::get('/resendemailverify/{email}',[AuthController::class,'resendemailverify'])->name('resendemailverify');
 Route::get('share/{slug}',[ProductController::class,'sharesinglenews'])->name('sharesinglenews');
 Route::get('autotrialemail',[FrontController::class,'autotrialemail'])->name('autotrialemail');
+Route::get('autopostemailtouser',[FrontController::class,'autopostemailtouser'])->name('autopostemailtouser');
 
 Route::middleware([CheckSubscription::class])->group(function(){
     

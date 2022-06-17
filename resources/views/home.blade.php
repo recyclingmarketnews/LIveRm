@@ -346,7 +346,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                           </div>
                         </form>
                         <div class="seperator"><b>or</b></div>
-                        <p class="text-center">Sign in with your social media account</p>
+                        <p class="text-center">Sign in with</p>
                         <!-- Social login buttons -->
                         <div class="social-icon">
                           <a href="{{ url('auth/google') }}"><button type="button" style="background:#ea4335;"><i class="fa fa-google"></i></button></a>
@@ -376,6 +376,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
         </section>
         </div>
+        <section class="py-5" style="    background: #c8f0e0;">
+            <div class="section-content">
+                <div class="row topproducts-slidee owl-carousel">
+                    @foreach($list as $list)
+                    <div class="post-slide">
+                        <div class="post-img">
+                            @if($list->image == '')
+                            <img src="{{ asset('front/images/homenewscard.jpg')}}" alt="">
+                            @else
+                            <img src="{{ asset('uploads/post/'.$list->image)}}" alt="">
+                            @endif
+                            
+                            <a href="{{ URL::to('signupselect') }}" class="over-layer"><i class="fa fa-link"></i></a>
+                        </div>
+                        <div class="post-content">
+                            <h3 class="post-title">
+                                <a href="#">{!!Str::limit($list->heading,45)!!}</a>
+                            </h3>
+                            <?php $categories= DB::table('product_category')
+    ->where('id',$list->category_id)
+    ->get(); 
+    foreach($categories as $categories){
+        $cname=$categories->name;
+    }
+    
+    ?>
+                            <!--<p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>-->
+                            <span class="post-date"><i class="bx bx-category icon nav-icon"></i>{!!$cname!!}</span>
+                            <!--<a href="#" class="read-more">read more</a>-->
+                        </div>
+                    </div>
+                    @endforeach
+
+                    
+                </div>
+            </div>
+        </section>        
         <section class="section section-hero pb-5 pt-5" data-analytics-section-engagement="name:hero">
             <div class="hero-bottom red-bg" data-anim-scroll-group='HeroBottom'>
                 <div class="hero-bottom-content">
@@ -432,43 +469,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             
             </div>
         </section>        
-        <section class="py-5" style="    background: #c8f0e0;">
-            <div class="section-content">
-                <div class="row topproducts-slidee owl-carousel">
-                    @foreach($list as $list)
-                    <div class="post-slide">
-                        <div class="post-img">
-                            @if($list->image == '')
-                            <img src="{{ asset('front/images/homenewscard.jpg')}}" alt="">
-                            @else
-                            <img src="{{ asset('uploads/post/'.$list->image)}}" alt="">
-                            @endif
-                            
-                            <a href="{{ URL::to('signupselect') }}" class="over-layer"><i class="fa fa-link"></i></a>
-                        </div>
-                        <div class="post-content">
-                            <h3 class="post-title">
-                                <a href="#">{!!Str::limit($list->heading,45)!!}</a>
-                            </h3>
-                            <?php $categories= DB::table('product_category')
-    ->where('id',$list->category_id)
-    ->get(); 
-    foreach($categories as $categories){
-        $cname=$categories->name;
-    }
-    
-    ?>
-                            <!--<p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p>-->
-                            <span class="post-date"><i class="bx bx-category icon nav-icon"></i>{!!$cname!!}</span>
-                            <!--<a href="#" class="read-more">read more</a>-->
-                        </div>
-                    </div>
-                    @endforeach
 
-                    
-                </div>
-            </div>
-        </section>
         <!--  -->
 
 
