@@ -27,7 +27,7 @@
 																					<td class="r13-c" align="left">
 																						<table cellspacing="0" cellpadding="0" border="0" role="presentation" width="200" class="r14-o" style="table-layout: fixed; width: 200px;">
 																							<tr>
-																								<td class="r15-i" style="font-size: 0px; line-height: 0px;"> <img src="{{ asset('front/images/logowhite.png')}}" width="200" border="0" class="" style="display: block; width: 100%;"></td>
+																								<td class="r15-i" style="font-size: 0px; line-height: 0px;"> <img src="<?php echo e(asset('front/images/logowhite.png')); ?>" width="200" border="0" class="" style="display: block; width: 100%;"></td>
 																							</tr>
 																						</table>
 																					</td>
@@ -75,7 +75,7 @@
 																								<td align="left" valign="top" class="r20-i nl2go-default-textstyle" style="color: #3b3f44; font-family: arial,helvetica,sans-serif; font-size: 18px; line-height: 1.5; text-align: left; word-wrap: break-word;">
 																									<div style="text-align: center;">
 																										<p style="margin: 0;"> </p>
-																										<p style="margin: 0;"><span style="font-family: 'Times new roman', times, serif; font-size: 32px;"><strong>{{ $totalnews }}+ Latest news</strong></span></p>
+																										<p style="margin: 0;"><span style="font-family: 'Times new roman', times, serif; font-size: 32px;"><strong><?php echo e($totalnews); ?>+ Latest news</strong></span></p>
 																										<p style="margin: 0;"><span style="font-family: 'Times new roman', times, serif; font-size: 15px;"><strong>were published in last 24 hours on</strong></span></p>
 																										<p style="margin: 0;"><a href="http://www.recyclingmarketnews.com" target="_blank" style="color: #0092ff; text-decoration: underline;"><span style="font-family: 'Times new roman', times, serif; font-size: 15px;"><strong>RecyclingMarketNews.com</strong></span></a></p>
 																										<p style="margin: 0;"> </p>
@@ -133,7 +133,7 @@
 																								<td height="15" style="font-size: 15px; line-height: 15px;">­</td>
 																							</tr>
 																							<tr>
-																								<td class="r23-i" style="font-size: 0px; line-height: 0px;"> <img src="{{ asset('front/images/embedcolor.png')}}" width="51" border="0" class="" style="display: block; width: 100%;"></td>
+																								<td class="r23-i" style="font-size: 0px; line-height: 0px;"> <img src="<?php echo e(asset('front/images/embedcolor.png')); ?>" width="51" border="0" class="" style="display: block; width: 100%;"></td>
 																							</tr>
 																							<tr class="nl2go-responsive-hide">
 																								<td height="15" style="font-size: 15px; line-height: 15px;">­</td>
@@ -192,4 +192,4 @@
 				</table>
 			</td>
 		</tr>
-	</table>
+	</table><?php /**PATH C:\xampp\htdocs\liverm\resources\views/email/AutoPostSchedule.blade.php ENDPATH**/ ?>

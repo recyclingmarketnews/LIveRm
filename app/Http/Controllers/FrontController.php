@@ -62,6 +62,19 @@ class FrontController extends Controller
         );
         DB::table('testcron')->insert($array);
     }
+    public function autopostemailtouser(){
+        $message = '';
+        $totalnews = DB::table('news_list')->whereDate('created_at', '=', Carbon::today()->toDateString())->count();
+        $users = DB::table("users")->where('id','!=',1)->get();
+        if(count($users) > 0){
+            foreach($users as $key){
+                Mail::send('email.AutoPostSchedule', ['totalnews' => $totalnews], function($message) use($key){
+                    $message->to($key->email);
+                    $message->subject($key->fname.' News published in last 24 hours');
+                });               
+            }
+        }
+    }
     //
     public function testinvoice(){
         return view('email.offilineUserMessageToEmail');
