@@ -1,4 +1,5 @@
-    <header class="pt-4 header">
+
+<header class="pt-4 header">
         <div class="container">
             <div class="text-center mb-4">
                 <a href="{{ URL::to('/') }}" class=""><img class="img-fluid" src="{{ asset('front/images/logo.png')}}" width="380px" /></a>

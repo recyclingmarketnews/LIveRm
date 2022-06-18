@@ -262,13 +262,13 @@
 }
 
 .loader{
-    display: none;
+    display: block;
     position: fixed;
     z-index: 999999999999999;
     width: 104%;
     height: 100%;
     background: #000000 url(https://recyclingmarketnewstrial.com/assets/images/loader.gif) center center no-repeat;
-    opacity: .8;
+    opacity: .9;
     background-size: 150px;
 }
 /*////////*/
@@ -715,6 +715,18 @@ OneSignal.push(function() {
             });
         }, 5000);//time in milliseconds 
         </script>
+<script>
+	//paste this code under head tag or in a seperate js file.
+	// Wait for window load
+	$(document).ready(function() {
+		$(".loader").fadeOut("slow");
+	});
+    $(function() {
+        $("form").submit(function() {
+            $(":submit").html('<img src="<?php echo e(asset("assets/images/loader.gif")); ?>" width="30" />');
+        });
+    });
+</script>
     </body>
 </html>
 <?php /**PATH C:\xampp\htdocs\liverm\resources\views/dashboard/layouts/app.blade.php ENDPATH**/ ?>

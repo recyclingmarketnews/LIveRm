@@ -59,7 +59,7 @@
                     <div class="container-fluid">
                         <div class="row d-flex align-items-md-stretch">
                         <div class="col-lg-12 col-md-12 flex-lg-last flex-md-first">
-                            <div class="card sales-report">
+                            <div class="card sales-report mb-5">
                                 <?php if($admin == 0): ?>
                                 <form action="<?php echo e(URL::to('/submiteditpost')); ?>" method="post" enctype="multipart/form-data" class="">
                                 <?php else: ?>

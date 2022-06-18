@@ -27,6 +27,7 @@ use App\Http\Controllers\SocialAuth\GoogleSocialiteController;
  
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('auth/facebook', [GoogleSocialiteController::class, 'redirectToFB']);
+Route::get('auth/apple', [GoogleSocialiteController::class, 'redirectToApple']);
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 Route::get('callback/facebook', [GoogleSocialiteController::class, 'handleCallbackfacebook']);
 

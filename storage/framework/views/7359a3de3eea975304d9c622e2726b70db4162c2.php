@@ -1,5 +1,11 @@
 
 <?php $__env->startSection('content'); ?>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
+<link rel="stylesheet" href="<?php echo e(asset('assets/css/croppie.css')); ?> ">
+<script src="<?php echo e(asset('assets/js/croppie.js')); ?>"></script>
+
 <style>
     #img-preview {
   border: 2px dashed #333;  
@@ -28,7 +34,72 @@
   background-color: #fff;
   color: #003032;
 }
+/*//.....tooltip style....../*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){ width:100%;padding: 0px !important;}
 </style>
+<style type="text/css">
+img {
+  display: block;
+  max-width: 100%;
+}
+.preview {
+  overflow: hidden;
+  width: 160px; 
+  height: 160px;
+  margin: 10px;
+  border: 1px solid red;
+}
+.modal-lg{
+  max-width: 1000px !important;
+}
+</style>
+<script>
+    $(window).bind('beforeunload', function() {
+    if(unsaved){
+        return "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+    }
+});
+
+// Monitor dynamic inputs
+$(document).on('change', ':input', function(){ //triggers change in all input fields including text type
+    unsaved = true;
+});
+</script>
 <div class="main-content">
 
                 <div class="page-content">
@@ -52,33 +123,43 @@
 <section class="dashboard-header section-padding">
     <div class="container-fluid">
         <div class="row d-flex align-items-md-stretch">
-        <div class="col-lg-6 col-md-6 flex-lg-last flex-md-first">
+        <?php if(Auth::user()->user_value == 'company'): ?>
+            <div class="col-lg-12 col-md-12 flex-lg-last flex-md-first">
+        <?php else: ?>
+            <div class="col-lg-6 col-md-6 flex-lg-last flex-md-first">
+        <?php endif; ?>
             <div class="card sales-report mb-5">
                  <form action="<?php echo e(URL::to('/updateprofile')); ?>" method="post" enctype="multipart/form-data" class="">
                      <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
                     <div class="card-body">
                        <div class="d-xl-flex d-block align-items-center mb-5">
-                          <div class="profile-pic"><label class="-label m-0" for="file"><span>Change Image</span></label><input id="file" name="image" type="file"><img alt="icon" class="img-fluid" src="<?php echo e(asset('uploads/userimg/').'/'.$data->image); ?>" id="output" width="150"></div>
+                          <div class="profile-pic"><label class="-label m-0" for="file"><span>Change Image</span></label><input id="file" class="image" name="image" type="file"><img alt="icon" class="img-fluid" src="<?php echo e(asset('uploads/userimg/').'/'.$data->image); ?>" id="output" width="150"></div>
                           <p class="m-0 ml-xl-3 mt-3 mt-xl-0" style="margin-left: 10px !important;">Profile photo</p>
                        </div>
         
                        <div class="row">
                         <div class="col-xl-12 mb-3">
                             <div class="mb-5">
-                                <label class="mb-2 fontsize14 form-label">Background photo</label>
+                                <label class="mb-2 fontsize14 form-label">Background photo</label><span class="tooltip">!<span class="tooltiptext">you need to uplaod 700px by 150px size of banner. Otherwise banner will not looking good. Thanks</span></span>
                                   <div>
-                                    <div id="img-preview"><img src="<?php echo e(asset('uploads/userbimg/').'/'.$data->bimage); ?>" /></div>
+                                    <div><img id="img-preview" src="<?php echo e(asset('uploads/userbimg/').'/'.$data->bimage); ?>" /></div>
                                     <input type="file" id="choose-file" name="bimage" accept="image/*" />
                                     <label for="choose-file">Choose File</label>
                                   </div>                                        
                             </div>
                         </div>                           
                           <div class="col-xl-6 mb-3">
-                             <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">First Name</label><input name="fname" required="" type="text" class="transparent_form h-40px form-control inputstyle" value="<?php echo e($data->fname); ?>"></div>
+                             <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label"><?php if(Auth::user()->user_value == 'company'): ?> Company Name <?php else: ?> First Name <?php endif; ?></label><input name="fname" required="" type="text" class="transparent_form h-40px form-control inputstyle" value="<?php echo e($data->fname); ?>"></div>
                           </div>
+                          <?php if(Auth::user()->user_value == 'company'): ?>
+                          <div class="col-xl-6 mb-3">
+                             <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">Registered Address</label><input name="registered_address" required="" type="text" class="transparent_form h-40px form-control inputstyle" value="<?php echo e($data->registered_address); ?>"></div>
+                          </div>
+                          <?php else: ?>
                           <div class="col-xl-6 mb-3">
                              <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">Last Name</label><input name="lname" required="" type="text" class="transparent_form h-40px form-control inputstyle" value="<?php echo e($data->lname); ?>"></div>
                           </div>
+                          <?php endif; ?>
                           <div class="col-xl-12 mb-3">
                              <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">Facebook Link</label><input name="facebook"  type="text" class="transparent_form h-40px form-control inputstyle" value="<?php echo e($data->facebook); ?>"></div>
                           </div>
@@ -91,17 +172,22 @@
                           <div class="col-xl-12 mb-3">
                                 <div class="m-0 form-group">
                                     <label class="mb-2 fontsize14 form-label">Specialist</label>
-                                    <select class="transparent_form h-40px form-select inputstyle" name="specialist">
+                          
+                          
+                                      <select class="selectpicker transparent_form h-40px form-select inputstyle" multiple name="specialist[]" data-live-search="true">
+                                        <?php 
+                                            $specialistarray = json_decode($data->specialist);
+                                        ?>
                                         <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($key->name); ?>" <?php if($key->name == $data->specialist): ?> selected <?php endif; ?>><?php echo e($key->name); ?></option>
+                                        <option value="<?php echo e($key->name); ?>" <?php if(in_array($key->name, $specialistarray)): ?> selected <?php endif; ?>><?php echo e($key->name); ?> </option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    </select>
+                                      </select>                                   
                                 </div>
                           </div>
                           <?php $country = DB::table('country')->get(); ?>
                           <div class="col-xl-12 mb-3">
                                 <div class="m-0 form-group">
-                                    <label class="mb-2 fontsize14 form-label " >Country</label>
+                                    <label class="mb-2 fontsize14 form-label " Address>Country</label>
                                     <select name="country" class="transparent_form h-40px form-select inputstyle">
                                             <option value="" >Select Country</option>
                                             <?php $__currentLoopData = $country; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -110,16 +196,34 @@
                                             </select>
                                 </div>
                           </div>
+
+                          <!--<div class="col-xl-12 mb-3">-->
+                          <!--   <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">Address</label>-->
+                          <!--   <textarea class="form-control" id="address" name="address" rows="2"><?php echo e($data->address); ?></textarea>-->
+                          <!--</div>-->
+                          <!--</div>-->
                           <div class="col-xl-12 mb-3">
-                             <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">Address</label>
-                             <textarea class="form-control" id="address" name="address" rows="2"><?php echo e($data->address); ?></textarea>
-                          </div>
-                          </div>
-                          <div class="col-xl-12 mb-3">
-                             <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">About Me</label>
+                             <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">About <?php if(Auth::user()->user_value == 'company'): ?> Company <?php else: ?> Me <?php endif; ?></label>
                              <textarea class="form-control" id="bio" name="bio" rows="2"><?php echo e($data->bio); ?></textarea>
                             </div>
                           </div>
+                          <?php if(Auth::user()->user_value == 'company'): ?>
+                          <div class="col-xl-12 mb-3">
+                             <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">Marketing Contact Details</label><input name="marketingcontact"  type="text" class="transparent_form h-40px form-control inputstyle" value="<?php echo e($data->marketing_contact_detail); ?>"></div>
+                          </div>
+                          <div class="col-xl-12 mb-3">
+                             <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">Press Contact Details</label><input name="presscontact"  type="text" class="transparent_form h-40px form-control inputstyle" value="<?php echo e($data->press_contact_detail); ?>"></div>
+                          </div>
+                          <div class="col-xl-12 mb-3">
+                             <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">Sales Contact Details</label><input name="salecontact"  type="text" class="transparent_form h-40px form-control inputstyle" value="<?php echo e($data->sales_contact_details); ?>"></div>
+                          </div>
+                          <div class="col-xl-12 mb-3">
+                             <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">Sales Person Name</label><input name="saleperson"  type="text" class="transparent_form h-40px form-control inputstyle" value="<?php echo e($data->saleperson_name); ?>"></div>
+                          </div>
+                          <div class="col-xl-12 mb-3">
+                             <div class="m-0 form-group"><label class="mb-2 fontsize14 form-label">Website Address</label><input name="websiteaddress"  type="url" class="transparent_form h-40px form-control inputstyle" value="<?php echo e($data->website_address); ?>"></div>
+                          </div>
+                          <?php endif; ?>
                           <div class="col-xl-12"><button type="submit" class="btn btn-primary w-md">Update</button></div>
                        </div>
                     </div>
@@ -149,6 +253,7 @@
                  </form>
             </div>
         </div>
+        <?php if($data->user_value == 'individual'): ?>
         <div class="col-lg-12 col-md-12 flex-lg-last flex-md-first align-self-baseline">
             <div class="card sales-report mb-5">
                  
@@ -216,7 +321,7 @@
                                        <td>Sr</td>
                                        <td>Company</td>
                                        <td>Designation</td>
-                                       <td>Industory</td>
+                                       <td>Industry</td>
                                        <td>Location</td>
                                        <td>Starting Year</td>
                                        <td>Currently </td>
@@ -242,15 +347,19 @@
                                    </tr>
                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                    <tr>
-                                       <td colspan="7">No Record Found</td>
+                                       <td colspan="9">No Record Found</td>
                                    </tr>
                                    <?php endif; ?>
                                </tbody>
                            </table>
                        </div>
+                       <div style="text-align: right;font-size: 10px;color: red;">
+                           <p>To delete your account please send us an <a href="mailto:info@recyclingmarketnews.com">email</a></p> 
+                        </div>
                     </div>
             </div>
         </div>
+        <?php endif; ?>
         </div>        
 
 </div>
@@ -259,6 +368,53 @@
 				</div>
 			</div>
 
+<!-- Modal -->
+<div class="modal fade" id="croppies" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crop Profile Banner</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <div class="col-md-12 text-center" style="overflow-x: scroll;">
+				<div id="upload-image"></div>
+	  		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary cropped_image">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="sss" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crop Profile Image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+                <div class="img-container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="preview"></div>
+                        </div>
+                    </div>
+                </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="crop">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -367,8 +523,8 @@
                           </div>
                             <div class="col-xl-12 mb-3">
                              <div class="m-0 position-relative form-group">
-                                 <label class="mb-2 fontsize14 form-label">Ending Year *</label>
-                                 <input name="ending" placeholder="Ex: 2014" required="" type="text" id="ending" class="transparent_form h-40px form-control inputstyle" value="">
+                                 <label class="mb-2 fontsize14 form-label">Ending Year</label>
+                                 <input name="ending" placeholder="Ex: 2014" type="text" id="ending" class="transparent_form h-40px form-control inputstyle" value="">
                             </div>
                           </div>
                        </div>
@@ -382,46 +538,18 @@
   </div>
 </div>
 
-<script>
-const chooseFile = document.getElementById("choose-file");
-const imgPreview = document.getElementById("img-preview");
 
-chooseFile.addEventListener("change", function () {
-  getImgData();
-});
 
-function getImgData() {
-  const files = chooseFile.files[0];
-  if (files) {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(files);
-    fileReader.addEventListener("load", function () {
-      imgPreview.style.display = "block";
-      imgPreview.innerHTML = '<img src="' + this.result + '" />';
-    });    
-  }
-}
-</script>
 
-<script>
-const file = document.getElementById("file");
-const output = document.getElementById("output");
 
-file.addEventListener("change", function () {
-  getImgData11();
-});
 
-function getImgData11() {
-  const files = file.files[0];
-  if (files) {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(files);
-    fileReader.addEventListener("load", function () {
-        $("#output").attr("src",this.result);
-    });    
-  }
-}
-</script>
+
+
+</div>
+</div>
+
+
+
 			
 <script>
         function onPasswordCurrentClickShow(){
@@ -541,5 +669,118 @@ function getImgData11() {
         })
     }
 </script>
+<script>
+    var $modal = $('#sss');
+    var image = document.getElementById('image');
+    var cropper;
+        $("body").on("change", ".image", function(e){
+            var files = e.target.files;
+            var done = function (url) {
+            image.src = url;
+            $modal.modal('show');
+        };
+        var reader;
+        var file;
+        var url;
+        if (files && files.length > 0) {
+            file = files[0];
+            if (URL) {
+                done(URL.createObjectURL(file));
+            } else if (FileReader) {
+                reader = new FileReader();
+                reader.onload = function (e) {
+                done(reader.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    });
+    $modal.on('shown.bs.modal', function () {
+            cropper = new Cropper(image, {
+            aspectRatio: 1,
+            viewMode: 3,
+            preview: '.preview'
+        });
+    }).on('hidden.bs.modal', function () {
+        cropper.destroy();
+        cropper = null;
+    });
+    $("#crop").click(function(){
+        canvas = cropper.getCroppedCanvas({
+        width: 160,
+        height: 160,
+    });
+    canvas.toBlob(function(blob) {
+    url = URL.createObjectURL(blob);
+    var reader = new FileReader();
+    reader.readAsDataURL(blob); 
+    reader.onloadend = function() {
+            var base64data = reader.result; 
+            $(".loader").css("display","block");
+            $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "crop-image-upload",
+                    data: {'_token': "<?php echo e(csrf_token()); ?>", 'image': base64data},
+                    success: function(data){
+                    console.log(data);
+                    $modal.modal('hide');
+                    $("#output").attr("src", base64data);
+                    $(".loader").css("display","none");
+                }
+            });
+        }
+    });
+});
+</script>
+<script>
+    $(document).ready(function(){    
+    	$image_crop = $('#upload-image').croppie({
+    		enableExif: true,
+    		viewport: {
+    			width: 930,
+    			height: 150,
+    			type: 'square'
+    		},
+    		boundary: {
+    			width: 1000,
+    			height: 300
+    		}
+    	});
+    	$('#choose-file').on('change', function () { 
+    	    	
+    		var reader = new FileReader();
+    		reader.onload = function (e) {
+    			$image_crop.croppie('bind', {
+    				url: e.target.result
+    			}).then(function(){
+    			    $('.cr-slider').attr({'min':0.5000, 'max':1.4000});
+    				console.log('jQuery bind complete');
+    			});			
+    		}
+    		reader.readAsDataURL(this.files[0]);
+    	$("#croppies").modal('show');
+    	});
+    	$('.cropped_image').on('click', function (ev) {
+    		$image_crop.croppie('result', {
+    			type: 'canvas',
+    			size: 'viewport'
+    		}).then(function (response) {
+    		    $(".loader").css("display","block");
+    			$.ajax({
+    			     type: "POST",
+                    dataType: "json",
+                    url: "crop-bimage-upload",
+                    data: {'_token': "<?php echo e(csrf_token()); ?>", 'image': response},
+    				success: function (data) {
+			            $("#img-preview").attr("src", response);
+    				    $("#croppies").modal('hide');
+                        $(".loader").css("display","none");
+    				}
+    			});
+    		});
+    	});	
+    });
+</script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/wu6wt82f25ae/public_html/globalrecyclingnews.net/resources/views/dashboard/profile.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\liverm\resources\views/dashboard/profile.blade.php ENDPATH**/ ?>

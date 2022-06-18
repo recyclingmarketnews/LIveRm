@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="{{ asset('front/main.built.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('front/overview.built.css')}}" type="text/css" />
     <script src="{{ asset('front/head.built.js')}}" type="text/javascript" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <style>
         .scrollFade {
   opacity: 1;
@@ -218,10 +219,21 @@ button:hover{
     text-align: center;
  
 }
+.loader{
+    display: block;
+    position: fixed;
+    z-index: 999999999999999;
+    width: 104%;
+    height: 100%;
+    background: #000000 url(https://recyclingmarketnewstrial.com/assets/images/loader.gif) center center no-repeat;
+    opacity: .9;
+    background-size: 150px;
+}
     </style>
 </head>
 
 <body class="page-overview ac-gn-current-overview">
+<div class="loader"></div>
     <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5FBBVZ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -351,7 +363,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="social-icon">
                           <a href="{{ url('auth/google') }}"><button type="button" style="background:#ea4335;"><i class="fa fa-google"></i></button></a>
                           <a href="{{ url('auth/facebook') }}"> <button type="button" style="background:#3b5998;"><i class="fa fa-facebook"></i></button></a>
-                         <!-- <button type="button" style="background:#000000;" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="Login With Apple"><i class="fa fa-apple"></i></button> -->
+                          <!-- <a href="{{ url('auth/apple') }}"><button type="button" style="background:#000000;" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="Login With Apple"><i class="fa fa-apple"></i></button></a> -->
                         </div>
                         @else
                           <div class="d-grid">
@@ -481,7 +493,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <script type="text/javascript" src="{{ asset('front/ac-globalfooter.built.js')}}"></script>
     <script type="text/javascript" src="{{ asset('front/bootstrap.bundle.js')}}"></script>
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    
     <script src="{{ asset('front/owl.carousel.min.js')}}"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -570,6 +582,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
            $('#signupvalue').change( function() {
               location.href = $(this).val();
            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".loader").fadeOut("slow");
         });
     </script>
 </body>

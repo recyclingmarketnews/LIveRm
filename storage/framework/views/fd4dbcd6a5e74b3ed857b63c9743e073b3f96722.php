@@ -54,4 +54,4 @@
     <!-- End Page-content -->
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/wu6wt82f25ae/public_html/test.recyclingmarketnews.com/resources/views/dashboard/settings.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\liverm\resources\views/dashboard/settings.blade.php ENDPATH**/ ?>

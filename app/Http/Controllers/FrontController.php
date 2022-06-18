@@ -70,7 +70,7 @@ class FrontController extends Controller
             foreach($users as $key){
                 Mail::send('email.AutoPostSchedule', ['totalnews' => $totalnews], function($message) use($key){
                     $message->to($key->email);
-                    $message->subject($key->fname.' News published in last 24 hours');
+                    $message->subject($totalnews.'+ News published in last 24 hours');
                 });               
             }
         }

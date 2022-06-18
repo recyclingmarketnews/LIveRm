@@ -116,7 +116,10 @@ class DashboardController extends Controller
             $tapost = News::where('approval',1)->where('userid',Auth::user()->id)->count();    
             $trpost = News::where('approval',2)->where('userid',Auth::user()->id)->count();    
             $tppost = News::where('approval',0)->where('userid',Auth::user()->id)->count();    
-            return view('dashboard.dashboard',compact('tpost','tapost','trpost','tppost','pendinglist','totalpost','completeprofile'));
+            $postlike = DB::table('likes')->where('userid',Auth::id())->count();   
+            $postrating = DB::table('rating')->where('userid',Auth::id())->count();    
+            $postcomment = DB::table('comments')->where('userid',Auth::id())->count();    
+            return view('dashboard.dashboard',compact('tpost','tapost','trpost','tppost','pendinglist','totalpost','completeprofile','postlike','postrating','postcomment'));
         }else{
             
         }
