@@ -144,7 +144,8 @@ class ProductController extends Controller
         $posterdata = DB::table('users')->where('id',$postdata->userid)->first();
         $usersdata = DB::table('users')->where('id',$postdata->userid)->first();
         $updatearray = array(
-            "approval" => 1
+            "approval" => 1,
+            "created_at" => date('Y-m-d H:i:s')
         );
         $noti = array(
             "postid" =>  $postdata->id,
