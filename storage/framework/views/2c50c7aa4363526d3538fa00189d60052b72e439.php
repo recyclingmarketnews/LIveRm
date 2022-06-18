@@ -169,6 +169,9 @@ figure:hover img {
 .notlike-post{
     color: #fff;
 }
+.cpad{
+    padding: 1px 16px !important;
+}
 </style>
 <div class="main-content">
 
@@ -189,16 +192,20 @@ figure:hover img {
              <button class="btnStats btn-success" style="border: none;"><i class="fa fa-filter" style="padding-right: 8px;" aria-hidden="true"></i>Filter</button>
              <a href="<?php echo e(URL::to('addpost')); ?>" class="btn-dark" style="border: none; float:right;padding: 1px 10px;">Add Post</a>
         </div>
-        <form action="<?php echo e(URL::to('allactivepostt')); ?>" method="post" class="mainfilter dvStats" >
+
+        <div class="row">
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
+            <div class="row mt-2" id="webviewfilter" style="background:<?php if($mode == 'light'){ echo '#fff'; }else{ echo '#061e2c'; } ?>;">
+                
+                <div class="filter-buttons">
+                <form action="<?php echo e(URL::to('allactivepostt')); ?>" method="post" class="mainfilter dvStats" >
             <?php echo csrf_field(); ?>
 
-        <div class="row mt-2" style="background:<?php if($mode == 'light'){ echo '#fff'; }else{ echo '##061e2c'; } ?>; text-align:center;padding: 7px 0px;">
-            <div class="col-xl-1 col-lg-1 btn-danger">
-                 <a style="color: white;" href="<?php echo e(URL::to('allactivepost')); ?>" class="btn ">Clear</a>
-            </div>
+        <div class="row" style="background:<?php if($mode == 'light'){ echo '#fff'; }else{ echo '##061e2c'; } ?>;  position: absolute;left: 12px;top: -10px; text-align:center;padding: 7px 0px;">
+           
             <div class="col-xl-3 col-lg-3 forfilterm">
                 <div class="m-0 form-group">
-                    <select name="rating" class="form-select" id="view_type_sorting" aria-haspopup="true" aria-expanded="false">
+                    <select name="rating" class="form-select cpad" id="view_type_sorting" aria-haspopup="true" aria-expanded="false">
                         <option style="color:#495057;" value="all" <?php if('all' == $rating): ?> selected <?php endif; ?>>Rating</option>
                         <option value="1" <?php if('1' == $rating): ?> selected <?php endif; ?>>1 Star</option> 
                         <option value="2"  <?php if('2' == $rating): ?> selected <?php endif; ?>>2 Stars</option>  
@@ -211,7 +218,7 @@ figure:hover img {
             	<?php $countryy = DB::table('country')->get(); ?>
             <div class="col-xl-3 col-lg-3 forfilterm">
                 <div class="m-0 form-group">
-                    <select name="country" style=" font-family:FontAwesome;" class="form-select">
+                    <select name="country" style=" font-family:FontAwesome;" class="form-select cpad">
                         <option value="all" <?php if('all' == $country): ?> selected <?php endif; ?>>Country</option>
                         
                     <?php $__currentLoopData = $countryy; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -222,7 +229,7 @@ figure:hover img {
             </div>
             <div class="col-xl-3 col-lg-3 forfilterm">
                 <div class="m-0 form-group">
-                    <select name="category" style=" font-family:FontAwesome;" class="form-select">
+                    <select name="category" style=" font-family:FontAwesome;" class="form-select cpad">
                         <option value="all" <?php if('all' == $country): ?> selected <?php endif; ?>>Category</option>
                         
                         <?php $__empty_1 = true; $__currentLoopData = $cats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
@@ -232,18 +239,12 @@ figure:hover img {
                     </select>
                 </div>
             </div>
-            <div class="col-xl-1 col-lg-1 btn-success">
-                <button style="color: white;" class="btn " type="submit">Filter </button>
-            </div>
             <div class="col-xl-1 col-lg-1">
-                 <a href="<?php echo e(URL::to('addpost')); ?>" class="btn btn-dark hideaddnews">+ Post</a>
+                <button style="color: white;     padding: 1px 12px;" class="btn btn-success" type="submit">Filter </button>
             </div>
+       
         </div>            
-        </form>
-        <div class="row">
-            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
-            <div class="row mt-2" id="webviewfilter" style="background:<?php if($mode == 'light'){ echo '#fff'; }else{ echo '#061e2c'; } ?>;">
-                <div class="filter-buttons">
+        </form>                   
                     <button class="me-2 listview" style="background:<?php if($mode == 'light'){ echo '#fff'; }else{ echo '#061e2c'; } ?>;border: none;color: #808087;"><i class="fa fa-bars" aria-hidden="true"></i></button>    
                     <button class="gridview" style="background:<?php if($mode == 'light'){ echo '#fff'; }else{ echo '#061e2c'; } ?>;border: none;color: #808087;"><i class="fa fa-th-large" aria-hidden="true"></i></button>    
                 </div>

@@ -69,4 +69,5 @@
                 </div>
             </div>
         </div>
-    </div><?php /**PATH C:\xampp\htdocs\liverm\resources\views/partial/footer.blade.php ENDPATH**/ ?>
+    </div>
+<?php /**PATH C:\xampp\htdocs\liverm\resources\views/partial/footer.blade.php ENDPATH**/ ?>

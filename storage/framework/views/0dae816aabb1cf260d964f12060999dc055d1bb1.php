@@ -95,7 +95,7 @@
         <?php else: ?>
             <div class="col-lg-6 col-md-6 flex-lg-last flex-md-first">
         <?php endif; ?>
-            <div class="card sales-report">
+            <div class="card sales-report mb-5">
                  <form action="<?php echo e(URL::to('/updateprofile')); ?>" method="post" enctype="multipart/form-data" class="">
                      <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
                     <div class="card-body">
@@ -197,7 +197,7 @@
             </div>
         </div>
         <div class="col-lg-6 col-md-6 flex-lg-last flex-md-first align-self-baseline">
-            <div class="card sales-report">
+            <div class="card sales-report mb-5">
                  <form action="<?php echo e(URL::to('/updatepassword')); ?>" method="post">
                      <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
                     <div class="card-body">
@@ -221,7 +221,7 @@
         </div>
         <?php if($data->user_value == 'individual'): ?>
         <div class="col-lg-12 col-md-12 flex-lg-last flex-md-first align-self-baseline">
-            <div class="card sales-report">
+            <div class="card sales-report mb-5">
                  
                      
                     <div class="card-body">
@@ -270,7 +270,7 @@
             </div>
         </div>
         <div class="col-lg-12 col-md-12 flex-lg-last flex-md-first align-self-baseline">
-            <div class="card sales-report">
+            <div class="card sales-report mb-5">
                  
                      
                     <div class="card-body">

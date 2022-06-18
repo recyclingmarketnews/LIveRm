@@ -111,5 +111,9 @@ class GoogleSocialiteController extends Controller
         } catch (Exception $e) {
             dd($e->getMessage());
         }
-    }    
+    }  
+    public function redirectToApple()
+    {
+        return Socialite::driver('apple')->redirect();
+    }  
 }

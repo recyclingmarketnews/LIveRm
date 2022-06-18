@@ -23,7 +23,7 @@
                     <div class="">
                         <div class="row d-flex align-items-md-stretch">
                         <div class="col-lg-12 col-md-12 flex-lg-last flex-md-first">
-                            <div class="card sales-report">
+                            <div class="card sales-report mb-5">
                                 <form action="<?php echo e(URL::to('/submitsettings')); ?>" method="post">
                                     <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
                                     <div class="card-body">

@@ -197,6 +197,51 @@ $(document).ready(function() {
                                         </div>
                                         </a>
                                     </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <a href="{{ URL::to('managepost?tab=pending') }}">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="avatar">
+                                                    <span class="avatar-title bg-soft-primary rounded">
+                                                        <i class="mdi mdi-thumb-up text-primary font-size-24"></i>
+                                                    </span>
+                                                </div>
+                                                <p class="text-muted mt-4 mb-0">Posts Like</p>
+                                                <h4 class="mt-1 mb-0">{{ $postlike }}</h4>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <a href="{{ URL::to('managepost?tab=pending') }}">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="avatar">
+                                                    <span class="avatar-title bg-soft-success rounded">
+                                                        <i class="mdi mdi-star-circle text-success font-size-24"></i>
+                                                    </span>
+                                                </div>
+                                                <p class="text-muted mt-4 mb-0">Posts Rating</p>
+                                                <h4 class="mt-1 mb-0">{{ $postrating }}</h4>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>                              
+                                    <div class="col-lg-4 col-md-6">
+                                        <a href="{{ URL::to('managepost?tab=pending') }}">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="avatar">
+                                                    <span class="avatar-title bg-soft-warning rounded">
+                                                        <i class="mdi mdi-wechat text-warning font-size-24"></i>
+                                                    </span>
+                                                </div>
+                                                <p class="text-muted mt-4 mb-0">Posts Comment</p>
+                                                <h4 class="mt-1 mb-0">{{ $postcomment }}</h4>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>                              
                                 @endif
 
                                 </div>

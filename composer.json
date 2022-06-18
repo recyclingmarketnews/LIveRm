@@ -11,6 +11,8 @@
         "php": "^7.3|^8.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
+        "genealabs/laravel-sign-in-with-apple": "*",
+        "genealabs/laravel-socialiter": "*",
         "guzzlehttp/guzzle": "^7.0.1",
         "ladumor/one-signal": "*",
         "laravel/framework": "^8.0",
@@ -18,6 +20,7 @@
         "laravel/tinker": "^2.0",
         "munafio/chatify": "^1.4",
         "pusher/pusher-php-server": "^7.0",
+        "socialiteproviders/apple": "*",
         "stripe/stripe-php": "^7.125"
     },
     "require-dev": {
@@ -29,7 +32,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "symfony/thanks": true
+        }
     },
     "extra": {
         "laravel": {

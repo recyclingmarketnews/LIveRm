@@ -67,7 +67,7 @@
                     <div class="container-fluid">
                         <div class="row d-flex align-items-md-stretch">
                         <div class="col-lg-12 col-md-12 flex-lg-last flex-md-first">
-                            <div class="card sales-report">
+                            <div class="card sales-report mb-5">
                                 <form action="<?php echo e(URL::to('/submitpost')); ?>" method="post" enctype="multipart/form-data" class="">
                                     <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
                                     <div class="card-body">
@@ -178,7 +178,7 @@
                                             </div>
                                         </div>
                                         <?php endif; ?>
-                                        <div class="col-xl-12"><button type="submit" class="btn btn-primary w-md"></i>Submit</button></div>
+                                        <div class="col-xl-12"><button type="submit" class="btn btn-success w-md"></i>Submit</button></div>
                                     </div>
                                     </div>
                                 </form>
