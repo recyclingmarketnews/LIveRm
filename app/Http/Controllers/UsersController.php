@@ -18,7 +18,12 @@ class UsersController extends Controller
         return view('dashboard.users.addUser',compact('category'));
     }
     public function manageUser(){
-        $users = User::where('user_type','!=',1)->where('status',1)->get();
+        $users = User::select('users.*')
+                    ->addSelect(DB::raw('COUNT(news_list.id) as totalpost'))
+                    ->leftJoin('news_list', 'news_list.userid', '=', 'users.id')
+                    ->where('users.user_type','!=',1)->where('users.status',1)
+                    ->groupBy('users.id')
+                    ->get();
         return view('dashboard.users.manageUser',compact('users'));
     }
     public function InsertUser(request $request){
