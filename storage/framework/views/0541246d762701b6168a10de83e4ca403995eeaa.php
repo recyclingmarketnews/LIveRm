@@ -129,6 +129,9 @@
                                             <th>Type</th>
                                             <th>Heading</th>
                                             <th>Status</th>
+                                            <th>Likes</th>
+                                            <th>Rating</th>
+                                            <th>Comments</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -144,13 +147,22 @@
                                             ?>
                                             <td><?php echo e($catename->name); ?></td>
                                             <td><?php echo e($key->heading); ?></td>
-                                            <td>                                                <?php if($key->approval == 0): ?>
+                                            <td>           
+                                                <?php if($key->approval == 0): ?>
                                                     <p>Waiting For Approval</p>
                                                 <?php elseif($key->approval == 1): ?>
                                                     <p>Approved</p>
                                                 <?php else: ?>
                                                     <p>Rejected</p>
                                                 <?php endif; ?></td>
+                                            <?php $likes = DB::table('likes')->where('postid',$key->id)->count()  ?>   
+                                            <?php $comments = DB::table('comments')->where('postid',$key->id)->count()  ?>    
+                                            <td><?php echo e($likes); ?></td>
+                                            <?php $pid = $key->id; $rating = DB::select("SELECT IFNULL(round(AVG(value),1),0) as value FROM rating WHERE postid='$pid'"); ?>  
+                                            <td><?php echo e($rating[0]->value); ?></td>
+                                            <td><?php echo e($comments); ?></td>
+                                            
+                                            
                                             <td>
                                                 <?php if(Auth::id() ==1): ?>
                                                     <a href="<?php echo e(URL::to('editpostadmin/'.$key->id)); ?>" class="btn btn-success btn-sm mb-2 me-2">Edit</a>

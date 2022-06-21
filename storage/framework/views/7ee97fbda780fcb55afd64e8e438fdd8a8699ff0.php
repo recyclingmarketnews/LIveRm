@@ -1,6 +1,6 @@
-@extends('dashboard.layouts.app')
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <div class="main-content">
 
                 <div class="page-content">
@@ -16,11 +16,11 @@
 				</div>				
 
 				<!-- breadcrumb -->
-				@if ($alertFm = Session::get('message'))
-                    <div class="alert alert-{{Session::get('type')}} alert-block">
-                        <strong>{{ $alertFm }}</strong>
+				<?php if($alertFm = Session::get('message')): ?>
+                    <div class="alert alert-<?php echo e(Session::get('type')); ?> alert-block">
+                        <strong><?php echo e($alertFm); ?></strong>
                     </div>
-                @endif
+                <?php endif; ?>
 				<!-- row -->
 				<div class="row" id="results">
 						<div class="col-sm-12 col-md-12 col-xl-12" id="mydivinner">
@@ -43,30 +43,30 @@
 										</thead>
 										<tbody>
 										
-											@forelse($users as $key)
+											<?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 											<tr>
-												<td>{{$loop->iteration}}</td>
-												<td><img width="50px" alt="avatar" class="rounded-circle" src="{{asset('uploads/userimg/'.$key->image)}}"></td>
-												<td>{{ $key->fname.' '.$key->lname}}</td>
-												<td>{{ $key->email }}</td>
-												<td>{{ $key->user_type == 2 ? 'Publisher' : 'Front User'}}</td>
-												<td>{{ $key->totalpost }}</td>
-												@php  $followercount  = DB::table('follower_list')->where('publisherid',$key->id)->count() @endphp
-												<td>{{ $followercount }}</td>
-												@php  $followingcount  = DB::table('follower_list')->where('userid',$key->id)->count() @endphp
-												<td>{{ $followingcount }}</td>
+												<td><?php echo e($loop->iteration); ?></td>
+												<td><img width="50px" alt="avatar" class="rounded-circle" src="<?php echo e(asset('uploads/userimg/'.$key->image)); ?>"></td>
+												<td><?php echo e($key->fname.' '.$key->lname); ?></td>
+												<td><?php echo e($key->email); ?></td>
+												<td><?php echo e($key->user_type == 2 ? 'Publisher' : 'Front User'); ?></td>
+												<td><?php echo e($key->totalpost); ?></td>
+												<?php  $followercount  = DB::table('follower_list')->where('publisherid',$key->id)->count() ?>
+												<td><?php echo e($followercount); ?></td>
+												<?php  $followingcount  = DB::table('follower_list')->where('userid',$key->id)->count() ?>
+												<td><?php echo e($followingcount); ?></td>
 												<?php $uid = $key->id; $rating = DB::select("SELECT ifnull(round(avg(ifnull(rating.value,0)),1),0) as ratingval FROM news_list
                                                                                         join rating on rating.postid = news_list.id
                                                                                         WHERE news_list.userid ='$uid'"); ?>
-												<td>{{ $rating[0]->ratingval }}</td>
+												<td><?php echo e($rating[0]->ratingval); ?></td>
 												<td>
-													<a href="#" onclick="deletebyid({{ $key->id }})" class="btn btn-danger btn-sm text-white">Delete</a>
-													<a href="{{URL::to('edit_user/'.$key->id)}}" class="btn btn-info btn-sm text-white">Update</a>
+													<a href="#" onclick="deletebyid(<?php echo e($key->id); ?>)" class="btn btn-danger btn-sm text-white">Delete</a>
+													<a href="<?php echo e(URL::to('edit_user/'.$key->id)); ?>" class="btn btn-info btn-sm text-white">Update</a>
 												</td>
 											</tr>
-											@empty
+											<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
-											@endforelse
+											<?php endif; ?>
 										</tbody>
 										
 									</table>									
@@ -84,10 +84,10 @@
 			</div>
 			</div>
 			<!-- main-content closed -->
-<script src="{{asset('assets/js/sweetalert.js')}}"></script>
+<script src="<?php echo e(asset('assets/js/sweetalert.js')); ?>"></script>
 <script>
    function deletebyid(id){
-       var url = "{{ route('deleteuser', ":id") }}";
+       var url = "<?php echo e(route('deleteuser', ":id")); ?>";
         url = url.replace(':id', id);
         Swal.fire({
           title: 'Are you sure?',
@@ -150,5 +150,6 @@
 
     });
 </script>
-		@endsection
+		<?php $__env->stopSection(); ?>
 		<!-- Internal Sweet-Alert js-->
+<?php echo $__env->make('dashboard.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\liverm\resources\views/dashboard/users/manageUser.blade.php ENDPATH**/ ?>

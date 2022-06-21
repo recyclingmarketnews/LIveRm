@@ -129,6 +129,9 @@
                                             <th>Type</th>
                                             <th>Heading</th>
                                             <th>Status</th>
+                                            <th>Likes</th>
+                                            <th>Rating</th>
+                                            <th>Comments</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -144,13 +147,22 @@
                                             ?>
                                             <td>{{$catename->name}}</td>
                                             <td>{{$key->heading}}</td>
-                                            <td>                                                @if ($key->approval == 0)
+                                            <td>           
+                                                @if ($key->approval == 0)
                                                     <p>Waiting For Approval</p>
                                                 @elseif ($key->approval == 1)
                                                     <p>Approved</p>
                                                 @else
                                                     <p>Rejected</p>
                                                 @endif</td>
+                                            @php $likes = DB::table('likes')->where('postid',$key->id)->count()  @endphp   
+                                            @php $comments = DB::table('comments')->where('postid',$key->id)->count()  @endphp    
+                                            <td>{{ $likes }}</td>
+                                            <?php $pid = $key->id; $rating = DB::select("SELECT IFNULL(round(AVG(value),1),0) as value FROM rating WHERE postid='$pid'"); ?>  
+                                            <td>{{ $rating[0]->value }}</td>
+                                            <td>{{ $comments }}</td>
+                                            
+                                            
                                             <td>
                                                 @if(Auth::id() ==1)
                                                     <a href="{{ URL::to('editpostadmin/'.$key->id) }}" class="btn btn-success btn-sm mb-2 me-2">Edit</a>
