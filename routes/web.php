@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\News;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\UsersController;
@@ -23,7 +26,31 @@ use App\Http\Controllers\SocialAuth\GoogleSocialiteController;
 |
 */
 
- 
+Route::get('/sitemap', function(){
+    $sitemap = Sitemap::create()
+    ->add(Url::create('/'))
+    ->add(Url::create('/pricing'))
+    ->add(Url::create('/contact'))
+    ->add(Url::create('/term'))
+    ->add(Url::create('/login'))
+    ->add(Url::create('/signupselect'))
+    ->add(Url::create('/front/pdffile/Privacy%20Policy%20-%20Recycling%20Market%20News.pdf'))
+    ->add(Url::create('/front/pdffile/Cookie%20Policy%20-%20Recycling%20Market%20News.pdf'))
+    ->add(Url::create('/front/pdffile/Terms%20_%20Conditions%20-%20Recycling%20Market%20News.pdf'))
+    ->add(Url::create('/front/pdffile/Community%20Guidelines%20-%20Recycling%20Market%20News.pdf'))
+    ->add(Url::create('/front/pdffile/Content%20Takedown%20Policy%20-%20Recycling%20Market%20News.pdf'))
+    ->add(Url::create('/front/pdffile/Disclaimer%20-%20Recycling%20Market%20News.pdf'))
+    ->add(Url::create('/front/pdffile/Refund%20Policy%20-%20Recycling%20Market%20News.pdf'))
+    ->add(Url::create('/forgotpassword'));
+   
+    $post = News::all();
+    foreach ($post as $post) {
+        $newsheading = $post->heading; 
+        $newsheading = strtolower(str_replace(" ", "-", $newsheading));
+        $sitemap->add(Url::create("/share/{$newsheading}"));
+    }
+    $sitemap->writeToFile(public_path('sitemap.xml'));
+});
  
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('auth/facebook', [GoogleSocialiteController::class, 'redirectToFB']);

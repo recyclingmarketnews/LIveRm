@@ -366,32 +366,32 @@ label.star:before {
                                                         @endif                                                        
                                                         <div class="carousel-item @if($newsdetails->videolink == '') active @endif">
                                                                 @if($newsdetails->image!="p.png")
-                                                                <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{asset('uploads/post/'.$newsdetails->image)}}">
+                                                                <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{asset('uploads/post/'.$newsdetails->image)}}">
                                                                 @elseif(!$newsdetails->image)
-                                                                <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{asset('uploads/post/'.$newsdetails->image)}}">
+                                                                <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{asset('uploads/post/'.$newsdetails->image)}}">
                                                                 @else
-                                                                 <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{ asset('front/images/homenewscard.jpg')}}">
+                                                                 <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{ asset('front/images/homenewscard.jpg')}}">
                                                                 @endif                                                            
                                                         </div>
                                                         @if($newsdetails->image1 != '')
                                                         <div class="carousel-item">
                                                                 @if($newsdetails->image1!="p.png")
-                                                                <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{asset('uploads/post/'.$newsdetails->image1)}}">
+                                                                <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{asset('uploads/post/'.$newsdetails->image1)}}">
                                                                 @elseif(!$newsdetails->image1)
-                                                                <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{asset('uploads/post/'.$newsdetails->image1)}}">
+                                                                <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{asset('uploads/post/'.$newsdetails->image1)}}">
                                                                 @else
-                                                                 <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{ asset('front/images/homenewscard.jpg')}}">
+                                                                 <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{ asset('front/images/homenewscard.jpg')}}">
                                                                 @endif 
                                                         </div>
                                                         @endif
                                                         @if($newsdetails->image2 != '')
                                                         <div class="carousel-item">
                                                                 @if($newsdetails->image2!="p.png")
-                                                                <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{asset('uploads/post/'.$newsdetails->image2)}}">
+                                                                <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{asset('uploads/post/'.$newsdetails->image2)}}">
                                                                 @elseif(!$newsdetails->image2)
-                                                                <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{asset('uploads/post/'.$newsdetails->image2)}}">
+                                                                <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{asset('uploads/post/'.$newsdetails->image2)}}">
                                                                 @else
-                                                                 <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{ asset('front/images/homenewscard.jpg')}}">
+                                                                 <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="{{ asset('front/images/homenewscard.jpg')}}">
                                                                 @endif 
                                                         </div>
                                                         @endif

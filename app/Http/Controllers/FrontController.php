@@ -67,14 +67,14 @@ class FrontController extends Controller
         $dt1 = strtotime($dt);
         $dt2 = date("l", $dt1);
         $dt3 = strtolower($dt2);
-        if(($dt3 != "saturday" )|| ($dt3 != "sunday")){
+        if($dt3 == "sunday"){}else{
             $message = '';
             $totalnews = DB::table('news_list')->whereDate('created_at', '=', Carbon::today()->toDateString())->count();
 
             $users = DB::table("users")->where('id','!=',1)->get();
             if(count($users) > 0){
                 foreach($users as $key){
-                    Mail::send('email.AutoPostSchedule', ['totalnews' => $totalnews], function($message) use($key){
+                    Mail::send('email.AutoPostSchedule', ['totalnews' => $totalnews], function($message) use($key,$totalnews){
                         $message->to($key->email);
                         $message->subject($totalnews.'+ News published in last 24 hours');
                     });               

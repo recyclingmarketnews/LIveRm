@@ -350,7 +350,8 @@ class ProductController extends Controller
                     $userid = $key->userid;
                     
                     $userdata = DB::table('users')->where('id',$userid)->first();
-                        Mail::send('email.postEmail', ['name' => $userdata->fname, 'heading' => $request->heading,'namee' => $posterdata->fname,'postid'=> $insertedId], function($message) use($userdata){
+                    $fname = $userdata->fname ?? 'User';
+                        Mail::send('email.postEmail', ['name' => $fname, 'heading' => $request->heading,'namee' => $posterdata->fname,'postid'=> $insertedId], function($message) use($userdata){
                               $message->to($userdata->email);
                               $message->subject('Latest News Published');
                         }); 

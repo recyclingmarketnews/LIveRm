@@ -27,10 +27,21 @@
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
 
 
-    <title>ALL RECYCLING NEWS ON ONE PLATFORM | RECYCLING MARKET NEWS</title>
-    <meta name="Description" content="Recycling Market News provides news from across industry on one platform, either it’s by News Publishers, our own coverage or by Recyclers themselves! Sign up!" />
-  <meta name="keywords" content="Recycling Market News, RecyclingMarketNews, Recycling, Market, News,">
-  <meta name="author" content="Recycling Market News">
+    <meta name="title" content="Recycling Market News: A platform of latest Recycling News"/>
+    <meta name="description" content="Recycling market news providing the latest recycling news from over the world, Stay up to date with the recycling updates." />
+    <meta name="keywords" content="Recycling Market News, RecyclingMarketNews, Recycling News, Recycling updates, Recycling, Market, News,">
+    <meta name="author" content="Recycling Market News">
+    <meta property="og:title" content="Recycling Market News: A platform of latest Recycling News"/>
+    <meta property="og:url" content="https://recyclingmarketnews.com/">
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Recycling market news providing the latest recycling news from over the world, Stay up to date with the recycling updates." />
+    <meta property="og:image" content= "https://recyclingmarketnews.com/front/images/logo.png">
+    <meta property="og:locale" content="en_GB" />
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Recycling Market News: A platform of latest Recycling News"/>
+    <meta name="twitter:description" content="Recycling market news providing the latest recycling news from over the world, Stay up to date with the recycling updates"/>
+    <meta name="twitter:url" content="https://twitter.com/recycling_mnews"/>
+    <meta name="twitter:image" content="https://twitter.com/recycling_mnews/photo"/>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-V116345MX3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
