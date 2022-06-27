@@ -366,32 +366,32 @@ label.star:before {
                                                         <?php endif; ?>                                                        
                                                         <div class="carousel-item <?php if($newsdetails->videolink == ''): ?> active <?php endif; ?>">
                                                                 <?php if($newsdetails->image!="p.png"): ?>
-                                                                <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('uploads/post/'.$newsdetails->image)); ?>">
+                                                                <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('uploads/post/'.$newsdetails->image)); ?>">
                                                                 <?php elseif(!$newsdetails->image): ?>
-                                                                <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('uploads/post/'.$newsdetails->image)); ?>">
+                                                                <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('uploads/post/'.$newsdetails->image)); ?>">
                                                                 <?php else: ?>
-                                                                 <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('front/images/homenewscard.jpg')); ?>">
+                                                                 <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('front/images/homenewscard.jpg')); ?>">
                                                                 <?php endif; ?>                                                            
                                                         </div>
                                                         <?php if($newsdetails->image1 != ''): ?>
                                                         <div class="carousel-item">
                                                                 <?php if($newsdetails->image1!="p.png"): ?>
-                                                                <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('uploads/post/'.$newsdetails->image1)); ?>">
+                                                                <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('uploads/post/'.$newsdetails->image1)); ?>">
                                                                 <?php elseif(!$newsdetails->image1): ?>
-                                                                <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('uploads/post/'.$newsdetails->image1)); ?>">
+                                                                <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('uploads/post/'.$newsdetails->image1)); ?>">
                                                                 <?php else: ?>
-                                                                 <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('front/images/homenewscard.jpg')); ?>">
+                                                                 <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('front/images/homenewscard.jpg')); ?>">
                                                                 <?php endif; ?> 
                                                         </div>
                                                         <?php endif; ?>
                                                         <?php if($newsdetails->image2 != ''): ?>
                                                         <div class="carousel-item">
                                                                 <?php if($newsdetails->image2!="p.png"): ?>
-                                                                <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('uploads/post/'.$newsdetails->image2)); ?>">
+                                                                <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('uploads/post/'.$newsdetails->image2)); ?>">
                                                                 <?php elseif(!$newsdetails->image2): ?>
-                                                                <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('uploads/post/'.$newsdetails->image2)); ?>">
+                                                                <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('uploads/post/'.$newsdetails->image2)); ?>">
                                                                 <?php else: ?>
-                                                                 <img style="border-radius:12px;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('front/images/homenewscard.jpg')); ?>">
+                                                                 <img style="border-radius:12px; background:black;height: 336px;    object-fit: contain;" class="img-fluid object-cover w-100 center-block chat-image" src="<?php echo e(asset('front/images/homenewscard.jpg')); ?>">
                                                                 <?php endif; ?> 
                                                         </div>
                                                         <?php endif; ?>
