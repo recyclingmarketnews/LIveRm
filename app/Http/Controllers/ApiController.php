@@ -116,12 +116,21 @@ class ApiController extends Controller
             return response()->json(['error'=>'error'], 401); 
         }
     }
-    public function getallNews(){
+    public function getallNews(Request $request){
+    $pageno=1;
+    $limitrate=24;
+    if($request->has('page')){
+        $pageno = $request->page;
+    }
+    if($request->has('limit')){
+        $limitrate = $request->limit;
+    }
+    $offset  = $limitrate * $pageno - $limitrate;
         \DB::statement("SET SQL_MODE=''");
         $data = DB::select("SELECT news_list.*, ifnull(round(AVG(rating.value),1),0) as rating, count(rating.id) as ratingcounter FROM `news_list`
 left outer join rating on rating.postid = news_list.id
 WHERE news_list.approval=1
-GROUP BY news_list.id");
+GROUP BY news_list.id limit $limitrate offset $offset");
         if ($data) {
             $newlist = array();
             foreach($data as $row){

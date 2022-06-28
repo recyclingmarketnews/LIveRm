@@ -26,7 +26,7 @@
    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
 
-
+    <title>Recycling Market News: A platform of latest Recycling News</title>
     <meta name="title" content="Recycling Market News: A platform of latest Recycling News"/>
     <meta name="description" content="Recycling market news providing the latest recycling news from over the world, Stay up to date with the recycling updates." />
     <meta name="keywords" content="Recycling Market News, RecyclingMarketNews, Recycling News, Recycling updates, Recycling, Market, News,">
