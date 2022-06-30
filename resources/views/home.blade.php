@@ -42,6 +42,32 @@
     <meta name="twitter:description" content="Recycling market news providing the latest recycling news from over the world, Stay up to date with the recycling updates"/>
     <meta name="twitter:url" content="https://twitter.com/recycling_mnews"/>
     <meta name="twitter:image" content="https://twitter.com/recycling_mnews/photo"/>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsMediaOrganization",
+        "name": "Recycling Market News",
+        "alternateName": "Recycling News",
+        "url": "https://recyclingmarketnews.com/",
+        "logo": "https://recyclingmarketnews.com/front/images/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+44 905 670 2019",
+          "contactType": "customer service",
+          "areaServed": ["GB","PL"],
+          "availableLanguage": ["en","Polish"]
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/recycling-market-news",
+          "https://facebook.com/recyclingmarketnews",
+          "https://twitter.com/recycling_mnews",
+          "https://www.instagram.com/recyclingmarketnews",
+      "https://www.youtube.com/channel/UCYq0bedZ2B5vUOxKZ6yYFnw",
+          "https://www.pinterest.co.uk/RecyclingMarketNews/",
+          "https://recyclingmarketnews.com/"
+        ]
+      }
+</script>    
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-V116345MX3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
