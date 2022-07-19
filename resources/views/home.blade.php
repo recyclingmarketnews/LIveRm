@@ -494,6 +494,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <p class="fontsize14" style="text-align: justify;">
                                     And when it comes to deciding who's trustworthy and who isn't, we make it easy: each user has their own ratings so you can see at a glance how reliable that person is as an information source or business partner.
                                     </p>
+                                    <p  class="fontsize14" style="text-align: justify;">There’s new recycling news that could make it a lot easier for everyone to reduce their waste and help the environment. According to a study recently published in the journal Science, if everyone on the planet recycled all of their plastic waste, the amount of greenhouse gas emissions released into the atmosphere each year could be reduced by up to a third.</p>
+                                    <p class="fontsize14" style="text-align: justify;">This new recycling news provides a much-needed wake-up call, and it’s time for all of us to do our part to reduce the amount of plastic waste we produce.</p>
+                                    
                                 </div>
                             </div>
                         </div>
